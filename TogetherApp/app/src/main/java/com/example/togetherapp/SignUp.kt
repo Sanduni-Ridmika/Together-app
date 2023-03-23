@@ -23,7 +23,7 @@ class SignUp : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
 
         edtName = findViewById(R.id.edt_name)
-        edtEmail = findViewById(R.id.edt_email)
+        edtEmail = findViewById(R.id.edt_email)`
         edtPassword = findViewById(R.id.edt_password)
         btnSignUp = findViewById(R.id.btnSignUp)
 
