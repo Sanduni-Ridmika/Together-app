@@ -64,5 +64,10 @@ disp(['Precision: ', num2str(precision)]);
 % confusionchart(TestingTarget, out)
 % title('Confusion Matrix')
 
+%% Export the trained model to JSON format using JSONlab
+jsonStr = savejson('', mdl); % empty string to convert entire model
+fid = fopen('model.json', 'w'); % opened a file to write the model
+fprintf(fid, '%s', jsonStr);
+fclose(fid);
 
 
