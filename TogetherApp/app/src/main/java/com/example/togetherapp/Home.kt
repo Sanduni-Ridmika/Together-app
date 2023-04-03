@@ -7,10 +7,17 @@ import android.widget.Button
 
 class Home : AppCompatActivity() {
     private lateinit var button2: Button
+    private lateinit var button1: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        button1 = findViewById(R.id.button1)
+        button1.setOnClickListener {
+            val intent = Intent(this, Questionnaire::class.java)
+            startActivity(intent)
+        }
 
         button2 = findViewById(R.id.button2)
         button2.setOnClickListener {
