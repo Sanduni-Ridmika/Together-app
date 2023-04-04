@@ -26,7 +26,28 @@
         android:textSize="18sp"
         android:visibility="visible">
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/question_text"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="What is Depression?"
+            android:textColor="@android:color/black"
+            android:textSize="22sp" />
 
+        <TextView
+            android:id="@+id/detail_text"
+            android:layout_width="288dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="80dp"
+            android:gravity="center"
+            android:text="Depression is a mental health disorder characterized by persistent feelings of sadness, hopelessness, and a loss of interest in activities that were once enjoyable. It can affect a person's thoughts, behavior, and overall well-being.Some common symptoms of depression include low mood, lack of energy, sleep disturbances, changes in appetite or weight, difficulty concentrating, feelings of worthlessness or guilt, and thoughts of suicide or self-harm. Depression can be caused by a variety of factors, including biological, genetic, environmental, and psychological factors. "
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+    </FrameLayout>
 
 </RelativeLayout>
