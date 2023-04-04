@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InfoDisplay">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="316dp"
+        android:layout_height="144dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/namelogo" />
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="337dp"
+        android:layout_height="495dp"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/box_background"
+        android:textColor="#2C6D80"
+        android:textSize="18sp"
+        android:visibility="visible">
+
+    </FrameLayout>
+
+
+</RelativeLayout>
