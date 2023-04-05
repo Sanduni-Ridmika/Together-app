@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 
 class Questionnaire : AppCompatActivity() {
 
@@ -63,6 +64,15 @@ class Questionnaire : AppCompatActivity() {
             val selectedRadioButtonId = optionsRadioGroup.checkedRadioButtonId
             if (selectedRadioButtonId != -1) {
                 userResponses[currentQuestionIndex] = radioButtonValues[selectedRadioButtonId]!!
+            }
+            else {
+                // Display an alert message if the user clicks the "next" button without selecting any radio buttons
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Alert")
+                    .setMessage("Please provide an answer.")
+                    .setPositiveButton("OK", null)
+                builder.create().show()
+                return@setOnClickListener
             }
 
             // Increment the current question index and update the question text to next question
