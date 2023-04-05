@@ -23,13 +23,21 @@ class Questionnaire : AppCompatActivity() {
         "Aches or pains, headaches, cramps, or digestive problems without a clear physical cause and/or that do not ease even with treatment?",
         "Thoughts that you would be better off dead, or hurting yourself in some way?"
     )
+    private val radioButtonValues = mapOf(
+        R.id.option1_radio_button to 0,
+        R.id.option2_radio_button to 1,
+        R.id.option3_radio_button to 2,
+        R.id.option4_radio_button to 3
+    )
     // Define the current question index
     private var currentQuestionIndex = 0
+    private val userResponses = mutableMapOf<Int, Int>()
 
     // Get references to the UI elements
     private lateinit var previousButton: Button
     private lateinit var nextButton: Button
     private lateinit var optionsRadioGroup: RadioGroup
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +58,13 @@ class Questionnaire : AppCompatActivity() {
             }
         }
         nextButton.setOnClickListener {
+
+            // save the user's response to the current question
+            val selectedRadioButtonId = optionsRadioGroup.checkedRadioButtonId
+            if (selectedRadioButtonId != -1) {
+                userResponses[currentQuestionIndex] = radioButtonValues[selectedRadioButtonId]!!
+            }
+
             // Increment the current question index and update the question text to next question
             if (currentQuestionIndex < questions.size - 1) {
                 currentQuestionIndex++
@@ -64,7 +79,17 @@ class Questionnaire : AppCompatActivity() {
     // display the current question
     private fun showCurrentQuestion() {
         val questionText = findViewById<TextView>(R.id.question_text)
-        optionsRadioGroup.clearCheck()
         questionText.text = questions[currentQuestionIndex]
+        // show the previously selected option for the current question (if any)
+        val previousResponse = userResponses[currentQuestionIndex]
+        if (previousResponse != null) {
+            val radioButtonId = radioButtonValues.entries.find { it.value == previousResponse }?.key
+            if (radioButtonId != null) {
+                optionsRadioGroup.check(radioButtonId)
+            }
+        } else {
+            optionsRadioGroup.clearCheck()
+        }
     }
+
 }
