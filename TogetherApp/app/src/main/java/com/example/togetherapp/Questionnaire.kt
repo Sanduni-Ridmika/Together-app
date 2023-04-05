@@ -1,11 +1,70 @@
 package com.example.togetherapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.RadioGroup
+import android.widget.TextView
 
 class Questionnaire : AppCompatActivity() {
+
+    // defining the questions list
+    private val questions = listOf(
+        "Little interest or pleasure in doing things?",
+        "Feeling down, depressed, or hopeless?",
+        "Trouble falling or staying asleep, or sleeping too much?",
+        "Feeling tired or having little energy?",
+        "Poor appetite or overeating?",
+        "Feeling memory loss or having trouble remembering?",
+        "Feeling bad about yourself or that you are a failure or have let yourself or your family down?",
+        "Trouble concentrating on things, such as reading the newspaper or watching television?",
+        "Moving or speaking so slowly or have been moving around a lot more than usual that other people could have noticed?",
+        "Aches or pains, headaches, cramps, or digestive problems without a clear physical cause and/or that do not ease even with treatment?",
+        "Thoughts that you would be better off dead, or hurting yourself in some way?"
+    )
+    // Define the current question index
+    private var currentQuestionIndex = 0
+
+    // Get references to the UI elements
+    private lateinit var previousButton: Button
+    private lateinit var nextButton: Button
+    private lateinit var optionsRadioGroup: RadioGroup
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_questionnaire)
+
+        // Initialize UI elements
+        previousButton = findViewById(R.id.previous_button)
+        nextButton = findViewById(R.id.next_button)
+        optionsRadioGroup = findViewById(R.id.options_radio_group)
+
+        showCurrentQuestion()
+
+        previousButton.setOnClickListener {
+            // Decrement the current question index and update the question text to previous question
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--
+                showCurrentQuestion()
+            }
+        }
+        nextButton.setOnClickListener {
+            // Increment the current question index and update the question text to next question
+            if (currentQuestionIndex < questions.size - 1) {
+                currentQuestionIndex++
+                showCurrentQuestion()
+            } else {
+                // all questions answered, show results page
+                val intent = Intent(this, Results::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+    // display the current question
+    private fun showCurrentQuestion() {
+        val questionText = findViewById<TextView>(R.id.question_text)
+        optionsRadioGroup.clearCheck()
+        questionText.text = questions[currentQuestionIndex]
     }
 }
