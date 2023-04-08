@@ -20,7 +20,8 @@ class Information : AppCompatActivity() {
         button1.setOnClickListener {
             val intent = Intent(this, InfoDisplay::class.java)
             intent.putExtra("question", "What is Depression?")
-            intent.putExtra("detail", "Depression is a mental health disorder that is characterized by persistent feelings of sadness and a loss of interest or pleasure in activities that a person used to enjoy. It is a serious condition that can affect a person's daily life and functioning, and it often requires treatment by a mental health professional.")
+            intent.putExtra("detail", "Depression is a mental health disorder characterized by persistent feelings of sadness, hopelessness, and a loss of interest or pleasure in activities that a person used to enjoy. It can also cause physical symptoms such as fatigue, changes in appetite, and difficulty sleeping.\n" +
+                    "The exact causes of depression are not fully understood, but it is believed to be the result of a combination of genetic, environmental, and psychological factors. Some common triggers of depression include stress, trauma, major life changes, medical conditions, and substance abuse. It's important to seek professional help if you or someone you know is experiencing symptoms of depression.")
             startActivity(intent)
         }
 
@@ -50,6 +51,8 @@ class Information : AppCompatActivity() {
                     "• Medications prescribed by a doctor or psychiatrist\n" +
                     "• Exercise or physical activity\n" +
                     "• Mindfulness-based practices like meditation or yoga\n" +
+                    "• Listening to mind relaxing music\n" +
+                    "• Mind relaxing exercises such as breathing exercises\n" +
                     "• Lifestyle changes such as improving sleep habits and reducing stress\n")
             startActivity(intent)
         }
