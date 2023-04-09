@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.widget.Button
 
 class Home : AppCompatActivity() {
-    private lateinit var button2: Button
     private lateinit var button1: Button
+    private lateinit var button2: Button
     private lateinit var button3: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ class Home : AppCompatActivity() {
 
         button3 = findViewById(R.id.button3)
         button3.setOnClickListener {
-            val intent = Intent(this, Breathing::class.java)
+            val intent = Intent(this, Meditations::class.java)
             startActivity(intent)
         }
     }
