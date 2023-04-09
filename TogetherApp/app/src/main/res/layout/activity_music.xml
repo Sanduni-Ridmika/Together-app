@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Music">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="316dp"
+        android:layout_height="144dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/namelogo" />
+
+    <TextView
+        android:id="@+id/Text1"
+        android:text="Forest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:textColor="#2C6D80"
+        android:textSize="16sp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <FrameLayout
+        android:id="@+id/frame1"
+        android:layout_width="336dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/Text1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/box_background"
+        android:textColor="#2C6D80"
+        android:textSize="18sp"
+        android:visibility="visible">
+
+        <ToggleButton
+            android:id="@+id/play_pause_toggle1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:checked="false"
+            android:padding="10dp"/>
+
+        <SeekBar
+            android:id="@+id/seekBar1"
+            android:layout_width="278dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal|center_vertical" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/Text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frame1"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:text="Earth Drum"
+        android:textColor="#2C6D80"
+        android:textSize="16sp" />
+
+    <FrameLayout
+        android:id="@+id/frame2"
+        android:layout_width="336dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/Text2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/box_background"
+        android:textColor="#2C6D80"
+        android:textSize="18sp"
+        android:visibility="visible">
+
+        <ToggleButton
+            android:id="@+id/play_pause_toggle2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:checked="false"
+            android:padding="10dp"/>
+
+        <SeekBar
+            android:id="@+id/seekBar2"
+            android:layout_width="278dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal|center_vertical" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/Text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frame2"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:text="Wind Chimes"
+        android:textColor="#2C6D80"
+        android:textSize="16sp" />
+
+    <FrameLayout
+        android:id="@+id/frame3"
+        android:layout_width="336dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/Text3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/box_background"
+        android:textColor="#2C6D80"
+        android:textSize="18sp"
+        android:visibility="visible">
+
+        <ToggleButton
+            android:id="@+id/play_pause_toggle3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:checked="false"
+            android:padding="10dp"/>
+
+        <SeekBar
+            android:id="@+id/seekBar3"
+            android:layout_width="278dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal|center_vertical" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/Text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frame3"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:text="River Steam"
+        android:textColor="#2C6D80"
+        android:textSize="16sp" />
+
+    <FrameLayout
+        android:id="@+id/frame4"
+        android:layout_width="336dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/Text4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/box_background"
+        android:textColor="#2C6D80"
+        android:textSize="18sp"
+        android:visibility="visible">
+
+        <ToggleButton
+            android:id="@+id/play_pause_toggle4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:checked="false"
+            android:padding="10dp"/>
+
+        <SeekBar
+            android:id="@+id/seekBar4"
+            android:layout_width="278dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal|center_vertical" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/Text5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frame4"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:text="Rain"
+        android:textColor="#2C6D80"
+        android:textSize="16sp" />
+
+    <FrameLayout
+        android:id="@+id/frame5"
+        android:layout_width="336dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/Text5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/box_background"
+        android:textColor="#2C6D80"
+        android:textSize="18sp"
+        android:visibility="visible">
+
+        <ToggleButton
+            android:id="@+id/play_pause_toggle5"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:checked="false"
+            android:padding="10dp"/>
+
+        <SeekBar
+            android:id="@+id/seekBar5"
+            android:layout_width="278dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal|center_vertical" />
+    </FrameLayout>
+
+</RelativeLayout>
