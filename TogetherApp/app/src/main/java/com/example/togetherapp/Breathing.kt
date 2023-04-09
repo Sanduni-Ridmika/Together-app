@@ -45,8 +45,8 @@ class Breathing : AppCompatActivity() {
                 pauseTimer()
             }
         }
+        breathText.text = "Bring awareness to your breath"
 
-        breathText.visibility = View.INVISIBLE
     }
 
     private fun startTimer() {
@@ -61,11 +61,11 @@ class Breathing : AppCompatActivity() {
                 isTimerPaused = false
                 secondsRemaining = 60
                 updateButtonIcon()
-                timerText.text = "00:00"
-                breathText.visibility = View.INVISIBLE
+                breathText.text = "Bring awareness to your breath"
                 breathCountDownTimer.cancel()
                 val drawable = resources.getDrawable(R.drawable.play, null)
                 playButton.background = getCombinedDrawable(drawable)
+                timerText.visibility = View.INVISIBLE
             }
         }
 
@@ -73,16 +73,15 @@ class Breathing : AppCompatActivity() {
         countDownTimer.start()
         updateButtonIcon()
 
-        breathText.text = "Breathe In"
+        breathText.text = "Breathe Out"
         breathText.visibility = View.VISIBLE
 
         breathCountDownTimer = object : CountDownTimer(60000, breathDuration) {
-            //object : CountDownTimer(60000, 3000) {
             override fun onTick(millisUntilFinished: Long) {
-                if (breathText.text == "Breathe In") {
-                    breathText.text = "Breathe Out"
-                } else {
+                if (breathText.text == "Breathe Out") {
                     breathText.text = "Breathe In"
+                } else {
+                    breathText.text = "Breathe Out"
                 }
             }
 
@@ -91,7 +90,6 @@ class Breathing : AppCompatActivity() {
             }
         }
         breathCountDownTimer.start()
-//.start()
     }
 
     private fun pauseTimer() {
@@ -130,7 +128,7 @@ class Breathing : AppCompatActivity() {
             drawable
         )
         val layerDrawable = LayerDrawable(layers)
-        layerDrawable.setLayerInset(1, 0, 0, 0, 0)
+        layerDrawable.setLayerInset(1, 50, 50, 50, 50)
         return layerDrawable
     }
 }
