@@ -9,6 +9,7 @@ class Home : AppCompatActivity() {
     private lateinit var button1: Button
     private lateinit var button2: Button
     private lateinit var button3: Button
+    private lateinit var button4: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,12 @@ class Home : AppCompatActivity() {
         button3 = findViewById(R.id.button3)
         button3.setOnClickListener {
             val intent = Intent(this, Meditations::class.java)
+            startActivity(intent)
+        }
+
+        button4 = findViewById(R.id.button4)
+        button4.setOnClickListener {
+            val intent = Intent(this, SupportGroup::class.java)
             startActivity(intent)
         }
     }
