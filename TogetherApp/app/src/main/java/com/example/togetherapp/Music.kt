@@ -18,6 +18,9 @@ class Music : AppCompatActivity() {
     private lateinit var seekBar1: SeekBar
     private lateinit var seekBar2: SeekBar
     private var timer: Timer? = null
+    private var mediaPlayer1CurrentPosition: Int = 0 // Variable to store current position of mediaPlayer1
+    private var mediaPlayer2CurrentPosition: Int = 0 // Variable to store current position of mediaPlayer2
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +36,14 @@ class Music : AppCompatActivity() {
             if (isChecked) {
                 // Play track 1
                 try {
-                    mediaPlayer1.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Calm-and-Peaceful.mp3?alt=media&token=d3f1cfc7-4aae-4e27-bd80-df3f5dcbe47d")
-                    mediaPlayer1.prepare()
+                    if (mediaPlayer1CurrentPosition == 0) {
+                        // If starting from beginning, set data source and prepare
+                        mediaPlayer1.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Calm-and-Peaceful.mp3?alt=media&token=d3f1cfc7-4aae-4e27-bd80-df3f5dcbe47d")
+                        mediaPlayer1.prepare()
+                    } else {
+                        // If resuming from stopped position, seek to saved position
+                        mediaPlayer1.seekTo(mediaPlayer1CurrentPosition)
+                    }
                     mediaPlayer1.start()
                     seekBar1.max = mediaPlayer1.duration
                     startSeekBarUpdate(seekBar1, mediaPlayer1)
@@ -44,6 +53,7 @@ class Music : AppCompatActivity() {
             } else {
                 // Pause track 1
                 mediaPlayer1.pause()
+                mediaPlayer1CurrentPosition = mediaPlayer1.currentPosition
                 stopSeekBarUpdate()
             }
         }
@@ -55,8 +65,14 @@ class Music : AppCompatActivity() {
             if (isChecked) {
                 // Play track 2
                 try {
-                    mediaPlayer2.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Rain.mp3?alt=media&token=598f75a1-e06c-4a8d-8108-d41981280a13")
-                    mediaPlayer2.prepare()
+                    if (mediaPlayer2CurrentPosition == 0) {
+                        // If starting from beginning, set data source and prepare
+                        mediaPlayer2.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Rain.mp3?alt=media&token=598f75a1-e06c-4a8d-8108-d41981280a13")
+                        mediaPlayer2.prepare()
+                    } else {
+                        // If resuming from stopped position, seek to saved position
+                        mediaPlayer2.seekTo(mediaPlayer2CurrentPosition)
+                    }
                     mediaPlayer2.start()
                     seekBar2.max = mediaPlayer2.duration
                     startSeekBarUpdate(seekBar2, mediaPlayer2)
@@ -66,6 +82,7 @@ class Music : AppCompatActivity() {
             } else {
                 // Pause track 2
                 mediaPlayer2.pause()
+                mediaPlayer2CurrentPosition = mediaPlayer2.currentPosition
                 stopSeekBarUpdate()
             }
         }
