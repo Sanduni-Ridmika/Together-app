@@ -18,8 +18,8 @@ class Music : AppCompatActivity() {
     private lateinit var seekBar1: SeekBar
     private lateinit var seekBar2: SeekBar
     private var timer: Timer? = null
-    private var mediaPlayer1CurrentPosition: Int = 0 // Variable to store current position of mediaPlayer1
-    private var mediaPlayer2CurrentPosition: Int = 0 // Variable to store current position of mediaPlayer2
+    private var mediaPlayer1CurrentPosition: Int = 0
+    private var mediaPlayer2CurrentPosition: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +40,10 @@ class Music : AppCompatActivity() {
                         // If starting from beginning, set data source and prepare
                         mediaPlayer1.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Calm-and-Peaceful.mp3?alt=media&token=d3f1cfc7-4aae-4e27-bd80-df3f5dcbe47d")
                         mediaPlayer1.prepare()
+                        mediaPlayer1.setOnCompletionListener {
+                            // Set the toggle button to unchecked (or "off") state when music finishes
+                            playPauseToggle1.isChecked = false
+                        }
                     } else {
                         // If resuming from stopped position, seek to saved position
                         mediaPlayer1.seekTo(mediaPlayer1CurrentPosition)
@@ -69,6 +73,10 @@ class Music : AppCompatActivity() {
                         // If starting from beginning, set data source and prepare
                         mediaPlayer2.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Rain.mp3?alt=media&token=598f75a1-e06c-4a8d-8108-d41981280a13")
                         mediaPlayer2.prepare()
+                        mediaPlayer2.setOnCompletionListener {
+                            // Set the toggle button to unchecked (or "off") state when music finishes
+                            playPauseToggle2.isChecked = false
+                        }
                     } else {
                         // If resuming from stopped position, seek to saved position
                         mediaPlayer2.seekTo(mediaPlayer2CurrentPosition)
