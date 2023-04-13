@@ -34,33 +34,42 @@ class Music : AppCompatActivity() {
         val playPauseToggle1 = findViewById<ToggleButton>(R.id.play_pause_toggle1)
         playPauseToggle1.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                // Play track 1
                 try {
                     if (mediaPlayer1CurrentPosition == 0) {
-                        // If starting from beginning, set data source and prepare
-                        mediaPlayer1.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Calm-and-Peaceful.mp3?alt=media&token=d3f1cfc7-4aae-4e27-bd80-df3f5dcbe47d")
-                        mediaPlayer1.prepare()
-                        mediaPlayer1.setOnCompletionListener {
-                            // Set the toggle button to unchecked (or "off") state when music finishes
-                            playPauseToggle1.isChecked = false
-                        }
+                        // Move the media preparation and playback to a background thread
+                        Thread {
+                            mediaPlayer1.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Calm-and-Peaceful.mp3?alt=media&token=d3f1cfc7-4aae-4e27-bd80-df3f5dcbe47d")
+                            mediaPlayer1.prepare()
+                            mediaPlayer1.setOnCompletionListener {
+                                playPauseToggle1.post { // Use post to update UI on the main thread
+                                    //playPauseToggle1.isChecked = false
+                                    // Reset mediaPlayer1 when music finishes playing
+                                    mediaPlayer1.reset()
+                                    mediaPlayer1CurrentPosition = 0
+                                    playPauseToggle1.isChecked = false
+                                    seekBar1.progress = 0
+                                }
+                            }
+                            mediaPlayer1.start()
+                            seekBar1.max = mediaPlayer1.duration
+                            startSeekBarUpdate(seekBar1, mediaPlayer1)
+                        }.start()
                     } else {
-                        // If resuming from stopped position, seek to saved position
                         mediaPlayer1.seekTo(mediaPlayer1CurrentPosition)
+                        mediaPlayer1.start()
+                        seekBar1.max = mediaPlayer1.duration
+                        startSeekBarUpdate(seekBar1, mediaPlayer1)
                     }
-                    mediaPlayer1.start()
-                    seekBar1.max = mediaPlayer1.duration
-                    startSeekBarUpdate(seekBar1, mediaPlayer1)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
             } else {
-                // Pause track 1
                 mediaPlayer1.pause()
                 mediaPlayer1CurrentPosition = mediaPlayer1.currentPosition
                 stopSeekBarUpdate()
             }
         }
+
 
         // Set up MediaPlayer for track 2
         mediaPlayer2 = MediaPlayer()
@@ -74,8 +83,13 @@ class Music : AppCompatActivity() {
                         mediaPlayer2.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Rain.mp3?alt=media&token=598f75a1-e06c-4a8d-8108-d41981280a13")
                         mediaPlayer2.prepare()
                         mediaPlayer2.setOnCompletionListener {
-                            // Set the toggle button to unchecked (or "off") state when music finishes
+                            // Reset mediaPlayer2 when music finishes playing
+                            mediaPlayer2.reset()
+                            mediaPlayer2CurrentPosition = 0
                             playPauseToggle2.isChecked = false
+                            seekBar2.progress = 0
+                            // Set the toggle button to unchecked (or "off") state when music finishes
+                           // playPauseToggle2.isChecked = false
                         }
                     } else {
                         // If resuming from stopped position, seek to saved position
