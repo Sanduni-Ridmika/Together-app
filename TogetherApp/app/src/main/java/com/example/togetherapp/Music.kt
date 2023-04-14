@@ -11,168 +11,126 @@ import java.io.IOException
 import java.util.*
 
 class Music : AppCompatActivity() {
-
-    private lateinit var mediaPlayer1: MediaPlayer
-    private lateinit var mediaPlayer2: MediaPlayer
+    private lateinit var mediaPlayer: MediaPlayer
     private lateinit var storageRef: StorageReference
     private lateinit var seekBar1: SeekBar
     private lateinit var seekBar2: SeekBar
     private var timer: Timer? = null
-    private var mediaPlayer1CurrentPosition: Int = 0
-    private var mediaPlayer2CurrentPosition: Int = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_music)
-
-        // Initialize Firebase Storage
         storageRef = FirebaseStorage.getInstance().getReference()
-
-        // Set up MediaPlayer for track 1
-        mediaPlayer1 = MediaPlayer()
+        mediaPlayer = MediaPlayer()
         val playPauseToggle1 = findViewById<ToggleButton>(R.id.play_pause_toggle1)
         playPauseToggle1.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
+                stopMediaPlayer()
                 try {
-                    if (mediaPlayer1CurrentPosition == 0) {
-                        // Move the media preparation and playback to a background thread
-                        Thread {
-                            mediaPlayer1.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Calm-and-Peaceful.mp3?alt=media&token=d3f1cfc7-4aae-4e27-bd80-df3f5dcbe47d")
-                            mediaPlayer1.prepare()
-                            mediaPlayer1.setOnCompletionListener {
-                                playPauseToggle1.post { // Use post to update UI on the main thread
-                                    //playPauseToggle1.isChecked = false
-                                    // Reset mediaPlayer1 when music finishes playing
-                                    mediaPlayer1.reset()
-                                    mediaPlayer1CurrentPosition = 0
-                                    playPauseToggle1.isChecked = false
-                                    seekBar1.progress = 0
-                                }
-                            }
-                            mediaPlayer1.start()
-                            seekBar1.max = mediaPlayer1.duration
-                            startSeekBarUpdate(seekBar1, mediaPlayer1)
-                        }.start()
-                    } else {
-                        mediaPlayer1.seekTo(mediaPlayer1CurrentPosition)
-                        mediaPlayer1.start()
-                        seekBar1.max = mediaPlayer1.duration
-                        startSeekBarUpdate(seekBar1, mediaPlayer1)
+                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Calm-and-Peaceful.mp3?alt=media&token=d3f1cfc7-4aae-4e27-bd80-df3f5dcbe47d")
+                    mediaPlayer.prepare()
+                    mediaPlayer.setOnCompletionListener {
+                        playPauseToggle1.post {
+                            mediaPlayer.reset()
+                            seekBar1.progress = 0
+                            playPauseToggle1.isChecked = false
+                        }
                     }
+                    mediaPlayer.start()
+                    seekBar1.max = mediaPlayer.duration
+                    startSeekBarUpdate(seekBar1, mediaPlayer)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
             } else {
-                mediaPlayer1.pause()
-                mediaPlayer1CurrentPosition = mediaPlayer1.currentPosition
+                mediaPlayer.pause()
                 stopSeekBarUpdate()
             }
         }
 
-
-        // Set up MediaPlayer for track 2
-        mediaPlayer2 = MediaPlayer()
         val playPauseToggle2 = findViewById<ToggleButton>(R.id.play_pause_toggle2)
         playPauseToggle2.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                // Play track 2
+                stopMediaPlayer()
                 try {
-                    if (mediaPlayer2CurrentPosition == 0) {
-                        // If starting from beginning, set data source and prepare
-                        mediaPlayer2.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Rain.mp3?alt=media&token=598f75a1-e06c-4a8d-8108-d41981280a13")
-                        mediaPlayer2.prepare()
-                        mediaPlayer2.setOnCompletionListener {
-                            // Reset mediaPlayer2 when music finishes playing
-                            mediaPlayer2.reset()
-                            mediaPlayer2CurrentPosition = 0
-                            playPauseToggle2.isChecked = false
+                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Rain.mp3?alt=media&token=598f75a1-e06c-4a8d-8108-d41981280a13")
+                    mediaPlayer.prepare()
+                    mediaPlayer.setOnCompletionListener {
+                        playPauseToggle2.post {
+                            mediaPlayer.reset()
                             seekBar2.progress = 0
-                            // Set the toggle button to unchecked (or "off") state when music finishes
-                           // playPauseToggle2.isChecked = false
+                            playPauseToggle2.isChecked = false
                         }
-                    } else {
-                        // If resuming from stopped position, seek to saved position
-                        mediaPlayer2.seekTo(mediaPlayer2CurrentPosition)
                     }
-                    mediaPlayer2.start()
-                    seekBar2.max = mediaPlayer2.duration
-                    startSeekBarUpdate(seekBar2, mediaPlayer2)
+                    mediaPlayer.start()
+                    seekBar2.max = mediaPlayer.duration
+                    startSeekBarUpdate(seekBar2, mediaPlayer)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
             } else {
-                // Pause track 2
-                mediaPlayer2.pause()
-                mediaPlayer2CurrentPosition = mediaPlayer2.currentPosition
+                mediaPlayer.pause()
                 stopSeekBarUpdate()
             }
         }
 
-        // Set up SeekBar for track 1
         seekBar1 = findViewById<SeekBar>(R.id.seekBar1)
         seekBar1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
-                    mediaPlayer1.seekTo(progress)
+                    mediaPlayer.seekTo(progress)
                 }
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                // Nothing to do
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                // Nothing to do
             }
         })
 
-        // Set up SeekBar for track 2
         seekBar2 = findViewById<SeekBar>(R.id.seekBar2)
         seekBar2.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
-                    mediaPlayer2.seekTo(progress)
+                    mediaPlayer.seekTo(progress)
                 }
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                // Nothing to do
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                // Nothing to do
             }
         })
     }
-    // Method to start updating SeekBar progress
-    private fun startSeekBarUpdate(seekBar: SeekBar, mediaPlayer: MediaPlayer) {
-        // Cancel any previous timers
-        stopSeekBarUpdate()
 
-        // Start a new timer to update SeekBar progress
+    override fun onDestroy() {
+        super.onDestroy()
+        stopMediaPlayer()
+    }
+
+    private fun startSeekBarUpdate(seekBar: SeekBar, mediaPlayer: MediaPlayer) {
         timer = Timer()
-        timer?.schedule(object : TimerTask() {
+        timer?.scheduleAtFixedRate(object : TimerTask() {
             override fun run() {
-                runOnUiThread {
+                seekBar.post {
                     seekBar.progress = mediaPlayer.currentPosition
                 }
             }
         }, 0, 500)
     }
 
-    // Method to stop updating SeekBar progress
     private fun stopSeekBarUpdate() {
         timer?.cancel()
         timer = null
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        // Release MediaPlayers when activity is destroyed
-        mediaPlayer1.release()
-        mediaPlayer2.release()
-        // Stop updating SeekBar progress
+    private fun stopMediaPlayer() {
+        if (mediaPlayer.isPlaying) {
+            mediaPlayer.stop()
+        }
+        mediaPlayer.reset()
         stopSeekBarUpdate()
     }
 }
