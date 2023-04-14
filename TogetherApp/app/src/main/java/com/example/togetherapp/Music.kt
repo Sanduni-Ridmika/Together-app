@@ -16,6 +16,7 @@ class Music : AppCompatActivity() {
     private lateinit var seekBar1: SeekBar
     private lateinit var seekBar2: SeekBar
     private var timer: Timer? = null
+    private var currentPlayingToggle: ToggleButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +35,13 @@ class Music : AppCompatActivity() {
                             mediaPlayer.reset()
                             seekBar1.progress = 0
                             playPauseToggle1.isChecked = false
+                            currentPlayingToggle = null
                         }
                     }
                     mediaPlayer.start()
                     seekBar1.max = mediaPlayer.duration
                     startSeekBarUpdate(seekBar1, mediaPlayer)
+                    currentPlayingToggle = playPauseToggle1
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -60,11 +63,13 @@ class Music : AppCompatActivity() {
                             mediaPlayer.reset()
                             seekBar2.progress = 0
                             playPauseToggle2.isChecked = false
+                            currentPlayingToggle = null
                         }
                     }
                     mediaPlayer.start()
                     seekBar2.max = mediaPlayer.duration
                     startSeekBarUpdate(seekBar2, mediaPlayer)
+                    currentPlayingToggle = playPauseToggle2
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -105,11 +110,6 @@ class Music : AppCompatActivity() {
         })
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        stopMediaPlayer()
-    }
-
     private fun startSeekBarUpdate(seekBar: SeekBar, mediaPlayer: MediaPlayer) {
         timer = Timer()
         timer?.scheduleAtFixedRate(object : TimerTask() {
@@ -130,7 +130,13 @@ class Music : AppCompatActivity() {
         if (mediaPlayer.isPlaying) {
             mediaPlayer.stop()
         }
+        currentPlayingToggle?.isChecked = false
+        currentPlayingToggle = null
         mediaPlayer.reset()
         stopSeekBarUpdate()
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        stopMediaPlayer()
     }
 }
