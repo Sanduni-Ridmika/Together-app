@@ -39,9 +39,13 @@ class Music : AppCompatActivity() {
                         }
                     }
                     mediaPlayer.start()
+                    if (seekBar1.progress > 0) { // Check if progress is not at the beginning
+                        mediaPlayer.seekTo(seekBar1.progress) // Resume from the current progress
+                    }
                     seekBar1.max = mediaPlayer.duration
                     startSeekBarUpdate(seekBar1, mediaPlayer)
                     currentPlayingToggle = playPauseToggle1
+                    playPauseToggle1.isChecked = true
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -67,9 +71,13 @@ class Music : AppCompatActivity() {
                         }
                     }
                     mediaPlayer.start()
+                    if (seekBar2.progress > 0) {
+                        mediaPlayer.seekTo(seekBar2.progress)
+                    }
                     seekBar2.max = mediaPlayer.duration
                     startSeekBarUpdate(seekBar2, mediaPlayer)
                     currentPlayingToggle = playPauseToggle2
+                    playPauseToggle2.isChecked = true
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
