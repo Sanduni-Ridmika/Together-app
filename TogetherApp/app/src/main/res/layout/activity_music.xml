@@ -41,18 +41,22 @@
 
         <ToggleButton
             android:id="@+id/play_pause_toggle1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:layout_gravity="center_vertical"
-            android:background="@null"
+            android:layout_marginLeft="6dp"
             android:checked="false"
+            android:textOff=""
+            android:textOn=""
+            android:background="@drawable/play_pause_togglebutton"
             android:padding="10dp"/>
 
         <SeekBar
             android:id="@+id/seekBar1"
             android:layout_width="278dp"
             android:layout_height="40dp"
-            android:layout_gravity="center_horizontal|center_vertical" />
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginLeft="10dp" />
     </FrameLayout>
 
 
@@ -82,17 +86,21 @@
 
         <ToggleButton
             android:id="@+id/play_pause_toggle2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:layout_gravity="center_vertical"
-            android:background="@null"
             android:checked="false"
+            android:textOff=""
+            android:textOn=""
+            android:background="@drawable/play_pause_togglebutton"
+            android:layout_marginLeft="6dp"
             android:padding="10dp"/>
 
         <SeekBar
             android:id="@+id/seekBar2"
             android:layout_width="278dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center_horizontal|center_vertical" />
     </FrameLayout>
 
@@ -123,17 +131,21 @@
 
         <ToggleButton
             android:id="@+id/play_pause_toggle3"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:layout_gravity="center_vertical"
-            android:background="@null"
             android:checked="false"
+            android:textOff=""
+            android:textOn=""
+            android:background="@drawable/play_pause_togglebutton"
+            android:layout_marginLeft="6dp"
             android:padding="10dp"/>
 
         <SeekBar
             android:id="@+id/seekBar3"
             android:layout_width="278dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center_horizontal|center_vertical" />
     </FrameLayout>
 
@@ -163,17 +175,21 @@
 
         <ToggleButton
             android:id="@+id/play_pause_toggle4"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:layout_gravity="center_vertical"
-            android:background="@null"
             android:checked="false"
+            android:textOff=""
+            android:textOn=""
+            android:background="@drawable/play_pause_togglebutton"
+            android:layout_marginLeft="6dp"
             android:padding="10dp"/>
 
         <SeekBar
             android:id="@+id/seekBar4"
             android:layout_width="278dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center_horizontal|center_vertical" />
     </FrameLayout>
 
@@ -203,17 +219,21 @@
 
         <ToggleButton
             android:id="@+id/play_pause_toggle5"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:layout_gravity="center_vertical"
-            android:background="@null"
             android:checked="false"
+            android:textOff=""
+            android:textOn=""
+            android:background="@drawable/play_pause_togglebutton"
+            android:layout_marginLeft="6dp"
             android:padding="10dp"/>
 
         <SeekBar
             android:id="@+id/seekBar5"
             android:layout_width="278dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center_horizontal|center_vertical" />
     </FrameLayout>
 

@@ -110,7 +110,7 @@ class Music : AppCompatActivity() {
                     }
                     mediaPlayer.start()
                     if (seekBar3.progress > 0) {
-                        mediaPlayer.seekTo(seekBar3.progress) 
+                        mediaPlayer.seekTo(seekBar3.progress)
                     }
                     seekBar3.max = mediaPlayer.duration
                     startSeekBarUpdate(seekBar3, mediaPlayer)
