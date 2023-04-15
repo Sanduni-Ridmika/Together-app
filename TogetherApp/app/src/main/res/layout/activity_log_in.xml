@@ -24,7 +24,9 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/edt_background"
         android:hint="Email"
-        android:paddingLeft="14dp" />
+        android:paddingLeft="14dp"
+        android:imeOptions="actionDone"
+        android:singleLine="true"/>
 
     <EditText
         android:id="@+id/edt_password"

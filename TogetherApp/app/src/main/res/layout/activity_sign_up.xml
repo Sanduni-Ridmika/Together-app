@@ -24,7 +24,9 @@
         android:hint="Name"
         android:paddingLeft="14dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:imeOptions="actionDone"
+        android:singleLine="true"/>
 
     <EditText
         android:id="@+id/edt_email"
@@ -36,7 +38,9 @@
         android:hint="Email"
         android:paddingLeft="14dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:imeOptions="actionDone"
+        android:singleLine="true"/>
 
     <EditText
         android:id="@+id/edt_password"
