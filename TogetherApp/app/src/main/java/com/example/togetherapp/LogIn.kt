@@ -52,7 +52,14 @@ class LogIn : AppCompatActivity() {
 
                 } else {
                     // If login fails display a message to the user.
-                    Toast.makeText(this@LogIn, "User does not exist", Toast.LENGTH_SHORT).show()
+                    val errorMessage: String = when {
+                        task.exception?.message?.contains("There is no user record corresponding to this identifier") == true -> "User does not exist."
+                        task.exception?.message?.contains("The password is invalid") == true -> "Password is incorrect."
+                        task.exception?.message?.contains("The email address is badly formatted") == true -> "Email is incorrect."
+                        else -> "Login failed."
+                    }
+                    Toast.makeText(this@LogIn, errorMessage, Toast.LENGTH_SHORT).show()
+
                 }
             }
     }

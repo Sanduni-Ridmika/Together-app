@@ -45,7 +45,14 @@ class SignUp : AppCompatActivity() {
 
                 } else {
                     // If sign in fails, display a message to the user.
-                    Toast.makeText(this@SignUp,"SignUp failed", Toast.LENGTH_SHORT).show()
+                    val errorMessage: String = when {
+                        task.exception?.message?.contains("already in use") == true -> "User already exists!"
+                        task.exception?.message?.contains("The email address is badly formatted") == true -> "Please give a valid email!."
+                        task.exception?.message?.contains("The given password is invalid") == true -> "Password is not strong enough!."
+                        else -> "SignUp failed."
+                    }
+                    Toast.makeText(this@SignUp, errorMessage, Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this@SignUp,"SignUp failed", Toast.LENGTH_SHORT).show()
                 }
             }
     }
