@@ -15,14 +15,20 @@ class Music : AppCompatActivity() {
     private lateinit var storageRef: StorageReference
     private lateinit var seekBar1: SeekBar
     private lateinit var seekBar2: SeekBar
+    private lateinit var seekBar3: SeekBar
+    private lateinit var seekBar4: SeekBar
+    private lateinit var seekBar5: SeekBar
+
     private var timer: Timer? = null
     private var currentPlayingToggle: ToggleButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_music)
+
         storageRef = FirebaseStorage.getInstance().getReference()
         mediaPlayer = MediaPlayer()
+
         val playPauseToggle1 = findViewById<ToggleButton>(R.id.play_pause_toggle1)
         playPauseToggle1.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -87,6 +93,102 @@ class Music : AppCompatActivity() {
             }
         }
 
+        val playPauseToggle3 = findViewById<ToggleButton>(R.id.play_pause_toggle3)
+        playPauseToggle3.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                stopMediaPlayer()
+                try {
+                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/dcpoke__birds-singing-03.mp3?alt=media&token=ec1343d7-236f-487d-b9e8-0a1bc7d7629e")
+                    mediaPlayer.prepare()
+                    mediaPlayer.setOnCompletionListener {
+                        playPauseToggle1.post {
+                            mediaPlayer.reset()
+                            seekBar3.progress = 0
+                            playPauseToggle3.isChecked = false
+                            currentPlayingToggle = null
+                        }
+                    }
+                    mediaPlayer.start()
+                    if (seekBar3.progress > 0) {
+                        mediaPlayer.seekTo(seekBar3.progress) 
+                    }
+                    seekBar3.max = mediaPlayer.duration
+                    startSeekBarUpdate(seekBar3, mediaPlayer)
+                    currentPlayingToggle = playPauseToggle3
+                    playPauseToggle3.isChecked = true
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            } else {
+                mediaPlayer.pause()
+                stopSeekBarUpdate()
+            }
+        }
+
+        val playPauseToggle4 = findViewById<ToggleButton>(R.id.play_pause_toggle4)
+        playPauseToggle4.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                stopMediaPlayer()
+                try {
+                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/cagancelik__river-stream-subtle-slow-gentle.mp3?alt=media&token=67246d55-8861-43b7-8ccc-049108ed2bcf")
+                    mediaPlayer.prepare()
+                    mediaPlayer.setOnCompletionListener {
+                        playPauseToggle4.post {
+                            mediaPlayer.reset()
+                            seekBar4.progress = 0
+                            playPauseToggle4.isChecked = false
+                            currentPlayingToggle = null
+                        }
+                    }
+                    mediaPlayer.start()
+                    if (seekBar4.progress > 0) {
+                        mediaPlayer.seekTo(seekBar4.progress)
+                    }
+                    seekBar4.max = mediaPlayer.duration
+                    startSeekBarUpdate(seekBar4, mediaPlayer)
+                    currentPlayingToggle = playPauseToggle4
+                    playPauseToggle4.isChecked = true
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            } else {
+                mediaPlayer.pause()
+                stopSeekBarUpdate()
+            }
+        }
+
+        val playPauseToggle5 = findViewById<ToggleButton>(R.id.play_pause_toggle5)
+        playPauseToggle5.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                stopMediaPlayer()
+                try {
+                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/burghrecords__birds-singing-forest-scotland.mp3?alt=media&token=d287f011-4806-40c4-8b23-4c55f4e72d42")
+                    mediaPlayer.prepare()
+                    mediaPlayer.setOnCompletionListener {
+                        playPauseToggle5.post {
+                            mediaPlayer.reset()
+                            seekBar5.progress = 0
+                            playPauseToggle5.isChecked = false
+                            currentPlayingToggle = null
+                        }
+                    }
+                    mediaPlayer.start()
+                    if (seekBar5.progress > 0) {
+                        mediaPlayer.seekTo(seekBar5.progress)
+                    }
+                    seekBar5.max = mediaPlayer.duration
+                    startSeekBarUpdate(seekBar5, mediaPlayer)
+                    currentPlayingToggle = playPauseToggle5
+                    playPauseToggle5.isChecked = true
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            } else {
+                mediaPlayer.pause()
+                stopSeekBarUpdate()
+            }
+        }
+
         seekBar1 = findViewById<SeekBar>(R.id.seekBar1)
         seekBar1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -94,10 +196,8 @@ class Music : AppCompatActivity() {
                     mediaPlayer.seekTo(progress)
                 }
             }
-
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
             }
-
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
             }
         })
@@ -109,10 +209,47 @@ class Music : AppCompatActivity() {
                     mediaPlayer.seekTo(progress)
                 }
             }
-
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
             }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+        })
 
+        seekBar3 = findViewById<SeekBar>(R.id.seekBar3)
+        seekBar3.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    mediaPlayer.seekTo(progress)
+                }
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+        })
+
+        seekBar4 = findViewById<SeekBar>(R.id.seekBar4)
+        seekBar4.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    mediaPlayer.seekTo(progress)
+                }
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+        })
+
+        seekBar5 = findViewById<SeekBar>(R.id.seekBar5)
+        seekBar5.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    mediaPlayer.seekTo(progress)
+                }
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
             }
         })
