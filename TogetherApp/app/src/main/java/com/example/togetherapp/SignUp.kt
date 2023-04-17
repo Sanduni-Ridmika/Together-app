@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 
 class SignUp : AppCompatActivity() {
 
@@ -39,9 +40,24 @@ class SignUp : AppCompatActivity() {
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success navigate to home page
-                    val intent = Intent(this@SignUp, Home::class.java)
-                    startActivity(intent)
+                    // Sign up success, update user profile with display name
+                    val user = mAuth.currentUser
+                    val displayName = edtName.text.toString()
+                    val profileUpdates = UserProfileChangeRequest.Builder()
+                        .setDisplayName(displayName)
+                        .build()
+
+                    user?.updateProfile(profileUpdates)
+                        ?.addOnCompleteListener { updateTask ->
+                            if (updateTask.isSuccessful) {
+                                // Display name updated successfully
+                                val intent = Intent(this@SignUp, Home::class.java)
+                                startActivity(intent)
+                            } else {
+                                // Failed to update display name
+                                Toast.makeText(this@SignUp, "Failed to update display name.", Toast.LENGTH_SHORT).show()
+                            }
+                        }
 
                 } else {
                     // If sign in fails, display a message to the user.
