@@ -41,6 +41,18 @@ class LogIn : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        // Check for user authentication state on app startup
+        val currentUser = mAuth.currentUser
+        if (currentUser != null) {
+            // User is already authenticated, navigate to home page
+            val intent = Intent(this@LogIn, Home::class.java)
+            startActivity(intent)
+            finish() // Finish the current activity to prevent going back to the login page
+        }
+    }
+
     private fun login(email: String, password: String){
         //login user
         mAuth.signInWithEmailAndPassword(email, password)
@@ -49,6 +61,7 @@ class LogIn : AppCompatActivity() {
                     // Login success navigate to home
                     val intent = Intent(this@LogIn, Home::class.java)
                     startActivity(intent)
+                    finish()
 
                 } else {
                     // If login fails display a message to the user.
