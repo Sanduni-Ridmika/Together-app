@@ -31,11 +31,11 @@
         android:layout_width="250dp"
         android:layout_height="53dp"
         android:layout_below="@id/button"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal|top"
         android:layout_marginTop="100dp"
         android:gravity="center"
         android:text="Add Contacts to your Support Group"
-        android:layout_centerHorizontal="true"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 

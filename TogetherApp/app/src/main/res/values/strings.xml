@@ -4,6 +4,5 @@
     <string name="pause">PAUSE</string>
     <string name="resume">RESUME</string>
     <string name="breath_in">BREATH IN</string>
-    <string name="breath_out">BREATH OUT</string>
 
 </resources>
