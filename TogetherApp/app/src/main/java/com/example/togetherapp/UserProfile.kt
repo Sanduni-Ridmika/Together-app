@@ -56,10 +56,10 @@ class UserProfile : AppCompatActivity() {
         // Toggle visibility of contact input fields
         if (layoutContacts.visibility == View.VISIBLE) {
             layoutContacts.visibility = View.GONE
-            txtAddContacts.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upside_down_arrow, 0)
+            txtAddContacts.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.`arrow_down`, 0)
         } else {
             layoutContacts.visibility = View.VISIBLE
-            txtAddContacts.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upside_down_arrow, 0)
+            txtAddContacts.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.`arrow_up`, 0)
         }
     }
 }
