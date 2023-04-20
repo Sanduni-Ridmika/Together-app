@@ -47,6 +47,45 @@
             android:textColor="#2C6D80"
             android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/txt_add_contacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_email"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="150dp"
+            android:text="Add contacts"
+            android:textColor="#2C6D80"
+            android:textSize="18sp"
+            android:clickable="true"
+            android:onClick="onAddContactsClicked"
+            android:drawableEnd="@android:drawable/arrow_down_float" />
+
+        <LinearLayout
+            android:id="@+id/layout_contacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_add_contacts"
+            android:layout_marginTop="180dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/edt_contact1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contact 1"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/edt_contact2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contact 2"
+                android:padding="10dp" />
+
+        </LinearLayout>
+
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="150dp"

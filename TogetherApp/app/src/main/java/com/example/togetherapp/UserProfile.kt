@@ -3,6 +3,7 @@ package com.example.togetherapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 
@@ -33,12 +34,32 @@ class UserProfile : AppCompatActivity() {
             txtEmail.text = "Email: ${currentUser.email}"
         }
 
+        // Set click listener for "Add contacts" button
+        val txtAddContacts = findViewById<TextView>(R.id.txt_add_contacts)
+        txtAddContacts.setOnClickListener {
+            onAddContactsClicked(it)
+        }
+
         btnLogout.setOnClickListener {
             // Log out the user
             FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, LogIn::class.java)
             startActivity(intent)
             finish() // Finish the current activity to prevent going back to the user profile page
+        }
+    }
+    // Click event handler for "Add contacts" button
+    fun onAddContactsClicked(view: View) {
+        val layoutContacts = findViewById<LinearLayout>(R.id.layout_contacts)
+        val txtAddContacts = findViewById<TextView>(R.id.txt_add_contacts)
+
+        // Toggle visibility of contact input fields
+        if (layoutContacts.visibility == View.VISIBLE) {
+            layoutContacts.visibility = View.GONE
+            txtAddContacts.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upside_down_arrow, 0)
+        } else {
+            layoutContacts.visibility = View.VISIBLE
+            txtAddContacts.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upside_down_arrow, 0)
         }
     }
 }
