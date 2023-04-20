@@ -75,8 +75,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Contact 1"
-                android:padding="10dp"
                 android:imeOptions="actionDone"
+                android:padding="10dp"
                 android:singleLine="true" />
 
             <EditText
@@ -84,9 +84,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Contact 2"
-                android:padding="10dp"
                 android:imeOptions="actionDone"
+                android:padding="10dp"
                 android:singleLine="true" />
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="127dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edt_contact2"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_background"
+                android:text="Save"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
