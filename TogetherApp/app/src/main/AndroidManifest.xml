@@ -29,9 +29,6 @@
             android:name=".Breathing"
             android:exported="false" />
         <activity
-            android:name=".symptoms"
-            android:exported="false" />
-        <activity
             android:name=".Results"
             android:exported="false" />
         <activity

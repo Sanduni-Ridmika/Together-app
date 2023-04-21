@@ -77,7 +77,9 @@
                 android:hint="Contact 1"
                 android:imeOptions="actionDone"
                 android:padding="10dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:inputType="phone"
+                android:digits="0123456789+" />
 
             <EditText
                 android:id="@+id/edt_contact2"
@@ -86,7 +88,9 @@
                 android:hint="Contact 2"
                 android:imeOptions="actionDone"
                 android:padding="10dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:inputType="phone"
+                android:digits="0123456789+" />
 
             <Button
                 android:id="@+id/btnSave"
