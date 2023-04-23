@@ -8,6 +8,7 @@ import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.example.togetherapp.Contacts
 
 class UserProfile : AppCompatActivity() {
 
@@ -89,10 +90,17 @@ class UserProfile : AppCompatActivity() {
 
         // Check if both contact fields are not empty
         if (contact1.isNotEmpty() && contact2.isNotEmpty()) {
+            // Generate a unique key for the contacts
+            val contactsRef = ref.push()
+            // Create Contacts object
+            val contacts = Contacts(contact1, contact2)
+            // Set the value of the unique key to the contacts object
+            contactsRef.setValue(contacts)
+
             // Save contact1 and contact2 to Firebase under "contacts" node
-            val contactsRef = ref.child("contacts")
-            contactsRef.child("contact1").setValue(contact1)
-            contactsRef.child("contact2").setValue(contact2)
+            //val contactsRef = ref.child("contacts")
+           // contactsRef.child("contact1").setValue(contact1)
+            //contactsRef.child("contact2").setValue(contact2)
 
             // Display saved contacts as non-editing texts
             edtContact1.isEnabled = false
