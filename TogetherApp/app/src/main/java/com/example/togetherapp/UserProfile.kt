@@ -59,7 +59,7 @@ class UserProfile : AppCompatActivity() {
 
         // Get Firebase database reference
         database = FirebaseDatabase.getInstance()
-        ref = database.getReference("contacts")
+        ref = database.getReference("TogetherApp")
 
         btnLogout.setOnClickListener {
             // Log out the user
