@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -8,14 +9,14 @@ app.use(cors({
   origin: ['http://localhost:4200']
 }));
 
-app.get("/",(req,res) => {
-    res.send("hello world");
-})
+app.get('/', (req, res) => {
+  res.send('Welcome to the API');
+  const responses = [1, 3, 2, 1, 2, 1, 2, 3, 1, 3, 3];
+});
 
 const port = 5000;
 app.listen(port, () => {
     console.log("Website served on http://localhost:" + port);
-})
+}) 
 
-//Imported machine learning model
-const model = require('/Users/Sanduni Ridmika/Desktop/FYP/AI/model.json');
+// res.send(`Predicted depression level: ${output}`); 
