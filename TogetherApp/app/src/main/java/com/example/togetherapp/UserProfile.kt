@@ -1,5 +1,6 @@
 package com.example.togetherapp
 
+import BaseActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +11,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.example.togetherapp.Contacts
 
-class UserProfile : AppCompatActivity() {
+class UserProfile : BaseActivity() {
 
     private lateinit var frameLayout: FrameLayout
     private lateinit var txtName: TextView

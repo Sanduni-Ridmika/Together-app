@@ -1,14 +1,14 @@
 package com.example.togetherapp
 
+import BaseActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.RadioGroup
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.auth.FirebaseAuth
 
-class Questionnaire : AppCompatActivity() {
+class Questionnaire : BaseActivity() {
 
     // defining the questions list
     private val questions = listOf(
@@ -38,7 +38,6 @@ class Questionnaire : AppCompatActivity() {
     private lateinit var previousButton: Button
     private lateinit var nextButton: Button
     private lateinit var optionsRadioGroup: RadioGroup
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,6 +85,7 @@ class Questionnaire : AppCompatActivity() {
             }
         }
     }
+
     // display the current question
     private fun showCurrentQuestion() {
         val questionText = findViewById<TextView>(R.id.question_text)
@@ -101,5 +101,4 @@ class Questionnaire : AppCompatActivity() {
             optionsRadioGroup.clearCheck()
         }
     }
-
 }

@@ -1,11 +1,12 @@
 package com.example.togetherapp
 
+import BaseActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 
-class InfoDisplay : AppCompatActivity() {
+class InfoDisplay : BaseActivity() {
     private lateinit var question_text: TextView
     private lateinit var detail_text: TextView
 

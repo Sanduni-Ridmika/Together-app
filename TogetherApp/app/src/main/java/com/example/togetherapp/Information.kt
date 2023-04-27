@@ -1,11 +1,12 @@
 package com.example.togetherapp
 
+import BaseActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class Information : AppCompatActivity() {
+class Information : BaseActivity() {
     private lateinit var button1: Button
     private lateinit var button2: Button
     private lateinit var button3: Button

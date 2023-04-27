@@ -1,5 +1,6 @@
 package com.example.togetherapp
 
+import BaseActivity
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +11,7 @@ import com.google.firebase.storage.StorageReference
 import java.io.IOException
 import java.util.*
 
-class Music : AppCompatActivity() {
+class Music : BaseActivity() {
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var storageRef: StorageReference
     private lateinit var seekBar1: SeekBar

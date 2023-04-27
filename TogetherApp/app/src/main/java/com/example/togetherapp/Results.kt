@@ -1,12 +1,13 @@
 package com.example.togetherapp
 
+import BaseActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 
-class Results : AppCompatActivity() {
+class Results : BaseActivity() {
 
     private lateinit var btnExercise: Button
 

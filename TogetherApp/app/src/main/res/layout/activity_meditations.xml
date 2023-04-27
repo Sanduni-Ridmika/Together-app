@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Meditations">
 
+    <include layout="@layout/hamburger"/>
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="316dp"

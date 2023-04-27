@@ -1,5 +1,6 @@
 package com.example.togetherapp
 
+import BaseActivity
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 
-class Breathing : AppCompatActivity() {
+class Breathing : BaseActivity() {
 
     private lateinit var playButton: Button
     private lateinit var timerText: TextView
