@@ -2,14 +2,14 @@ package com.example.togetherapp
 
 import BaseActivity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.example.togetherapp.Contacts
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class UserProfile : BaseActivity() {
 
@@ -53,14 +53,16 @@ class UserProfile : BaseActivity() {
         txtAddContacts.setOnClickListener {
             onAddContactsClicked(it)
         }
+        val database = Firebase.database
+        val myRef = database.getReference("message")
         // Set click listener for "Save" button
         btnSave.setOnClickListener {
-            onSaveClicked()
+            onSaveClicked(myRef)
         }
 
         // Get Firebase database reference
-        database = FirebaseDatabase.getInstance()
-        ref = database.getReference("TogetherApp")
+       // database = FirebaseDatabase.getInstance()
+       // ref = database.getReference("TogetherApp")
 
         btnLogout.setOnClickListener {
             // Log out the user
@@ -85,14 +87,14 @@ class UserProfile : BaseActivity() {
         }
     }
     // Click event handler for "Save" button
-    fun onSaveClicked() {
+    fun onSaveClicked(myRef: DatabaseReference) {
         val contact1 = edtContact1.text.toString().trim()
         val contact2 = edtContact2.text.toString().trim()
 
         // Check if both contact fields are not empty
         if (contact1.isNotEmpty() && contact2.isNotEmpty()) {
             // Generate a unique key for the contacts
-            val contactsRef = ref.push()
+            val contactsRef = myRef.push()
             // Create Contacts object
             val contacts = Contacts(contact1, contact2)
             // Set the value of the unique key to the contacts object
