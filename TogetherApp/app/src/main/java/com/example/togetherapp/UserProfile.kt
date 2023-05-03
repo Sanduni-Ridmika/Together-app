@@ -54,15 +54,12 @@ class UserProfile : BaseActivity() {
             onAddContactsClicked(it)
         }
         val database = Firebase.database
-        val myRef = database.getReference("message")
+        val myRef = database.getReference("contacts")
+
         // Set click listener for "Save" button
         btnSave.setOnClickListener {
-            onSaveClicked(myRef)
+            onSaveClicked( myRef)
         }
-
-        // Get Firebase database reference
-       // database = FirebaseDatabase.getInstance()
-       // ref = database.getReference("TogetherApp")
 
         btnLogout.setOnClickListener {
             // Log out the user
@@ -94,16 +91,12 @@ class UserProfile : BaseActivity() {
         // Check if both contact fields are not empty
         if (contact1.isNotEmpty() && contact2.isNotEmpty()) {
             // Generate a unique key for the contacts
-            val contactsRef = myRef.push()
+
+            //val contactsRef = myRef.push()
             // Create Contacts object
             val contacts = Contacts(contact1, contact2)
             // Set the value of the unique key to the contacts object
-            contactsRef.setValue(contacts)
-
-            // Save contact1 and contact2 to Firebase under "contacts" node
-            //val contactsRef = ref.child("contacts")
-           // contactsRef.child("contact1").setValue(contact1)
-            //contactsRef.child("contact2").setValue(contact2)
+            myRef.child(mAuth.uid.toString()).setValue(contacts)
 
             // Display saved contacts as non-editing texts
             edtContact1.isEnabled = false
