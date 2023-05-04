@@ -1,23 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-//const fs = require('fs');
-//const pickle = require('pickle-js');
 const {PythonShell} = require('python-shell');
-//const path = require('path');
 
 const app = express();
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Endpoint to make predictions
 app.post('/predict', (req, res) => {
   // Get the user input from the request body
-  //const input = req.body.input;
-  const input = [3,2,3,2,3,2,3,3,3,3,2]
+  const input = req.body.input;
 
   // Call the Python script to make the prediction
   const options = {
-    scriptPath: './', // The directory where your Python script is located
+    scriptPath: './',
     args: [input], // Pass the input as an argument to the Python script
   };
   PythonShell.run('model.py', options, (err, result) => {
@@ -31,11 +28,14 @@ app.post('/predict', (req, res) => {
   });
 });
 
-
 app.get('/', (req, res) => {
   res.send('Welcome to the API');
-  // const responses = [1, 3, 2, 1, 2, 1, 2, 3, 1, 3, 3];
 });
+
+const port = 5000;
+app.listen(port, () => {
+    console.log("Website served on http://localhost:" + port);
+}) 
 
 /*
 // Load the .pkl file containing the model
@@ -62,12 +62,3 @@ app.post('/predict', (req, res) => {
   res.send(`The predicted depression level is: ${prediction}`);
 });
 */
-
-const port = 5000;
-app.listen(port, () => {
-    console.log("Website served on http://localhost:" + port);
-}) 
-
-
-
-// res.send(`Predicted depression level: ${output}`); 
