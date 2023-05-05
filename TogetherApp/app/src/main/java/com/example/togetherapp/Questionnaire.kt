@@ -7,6 +7,20 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
+import okhttp3.*
+import okhttp3.Request
+import okhttp3.Response
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+
+import okio.IOException
+import org.json.JSONArray
+import org.json.JSONObject
 
 class Questionnaire : BaseActivity() {
 
@@ -30,14 +44,18 @@ class Questionnaire : BaseActivity() {
         R.id.option3_radio_button to 2,
         R.id.option4_radio_button to 3
     )
+    private val client = OkHttpClient()
+
     // Define the current question index
     private var currentQuestionIndex = 0
     private val userResponses = mutableMapOf<Int, Int>()
+    //private var prediction: String? = null
 
     // Get references to the UI elements
     private lateinit var previousButton: Button
     private lateinit var nextButton: Button
     private lateinit var optionsRadioGroup: RadioGroup
+    var prediction = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,8 +98,10 @@ class Questionnaire : BaseActivity() {
                 showCurrentQuestion()
             } else {
                 // all questions answered, show results page
-                val intent = Intent(this, Results::class.java)
-                startActivity(intent)
+                //val intent = Intent(this, Results::class.java)
+                //startActivity(intent)
+
+                sendResultsToFlask()
             }
         }
     }
@@ -101,4 +121,88 @@ class Questionnaire : BaseActivity() {
             optionsRadioGroup.clearCheck()
         }
     }
+
+    private fun sendResultsToFlask() {
+        val responses = mutableListOf<Float>()
+        for (i in 0 until questions.size) {
+            userResponses[i]?.let { response ->
+                responses.add(response.toFloat())
+            }
+        }
+
+        // prepare the JSON request body
+        val json = JSONObject()
+        json.put("responses", JSONArray(responses))
+        val requestBody = json.toString().toRequestBody("application/json".toMediaTypeOrNull())
+
+        // Send the user responses to the Flask server using OkHttp
+        val request = Request.Builder()
+            .url("  https://d8ca-2402-d000-a500-6459-74f0-5b51-b941-1758.ap.ngrok.io/appPredict")
+            .post(requestBody)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                // Display an error message if the HTTP request fails
+                runOnUiThread {
+                    Toast.makeText(this@Questionnaire, "Failed to submit your responses.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onResponse(call: Call, response: Response) {
+                val responseMediaType = response.body?.contentType()?.toString() ?: ""
+                if (responseMediaType == "application/json") {
+                    // the response is in JSON format
+                    val jsonResponse = response.body?.string() ?: "{}"
+                    val jsonObject = JSONObject(jsonResponse)
+                    prediction = jsonObject.optString("prediction", "Unknown error")
+
+                    // display the prediction response
+                    runOnUiThread {
+                        Toast.makeText(this@Questionnaire, prediction, Toast.LENGTH_LONG).show()
+                    }
+                } else {
+                    // the response is not in JSON format
+                    prediction = response.body?.string() ?: "Unknown error"
+
+                }
+                val intent = Intent(this@Questionnaire, Results::class.java).apply {
+                    putExtra("prediction", prediction)
+                }
+                startActivity(intent)
+                // Display a success message if the HTTP request succeeds
+                runOnUiThread {
+                    Toast.makeText(
+                        this@Questionnaire,
+                        "Responses have been submitted successfully.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+        })
+    }
+
 }
+
+/*
+            override fun onResponse(call: Call, response: Response) {
+
+                // save prediction response
+                val prediction = response.body?.string() ?: "Unknown error"
+
+                // Display the response body in a toast message
+                runOnUiThread {
+                    Toast.makeText(this@Questionnaire, "Response: $prediction", Toast.LENGTH_LONG).show()
+                }
+                /*
+                val intent = Intent(this@Questionnaire, Results::class.java).apply {
+                    putExtra("prediction", prediction)
+                }
+                startActivity(intent)
+
+                // Display a success message if the HTTP request succeeds
+                runOnUiThread {
+                    Toast.makeText(this@Questionnaire, "Responses have been submitted successfully.", Toast.LENGTH_SHORT).show()
+                }*/
+
+ */

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import pickle
 
 app = Flask(__name__)
@@ -24,13 +24,50 @@ def predict():
     Q11 = float(request.form['Q11'])
 
     result_dict = {
-        0: 'Not Depressed',
-        1: 'Depressed',
+        0: 'Depressed',
+        1: 'Not Depressed',
+        2: 'Severely Depressed'
+    }
+
+    result_num = model.predict([[Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11]])[0]
+    result = result_dict[result_num]
+    return render_template('home.html', **locals())
+
+
+@app.route('/appPredict', methods=['POST'])
+def app_predict():
+    req_data = request.get_json()
+    
+    print(req_data["responses"][0])
+    # Extracting values from the JSON data
+    Q1 = float(req_data["responses"][0])
+    Q2 = float(req_data["responses"][1])
+    Q3 = float(req_data["responses"][2])
+    Q4 = float(req_data["responses"][3])
+    Q5 = float(req_data["responses"][4])
+    Q6 = float(req_data["responses"][5])
+    Q7 = float(req_data["responses"][6])
+    Q8 = float(req_data["responses"][7])
+    Q9 = float(req_data["responses"][8])
+    Q10 = float(req_data["responses"][9])
+    Q11 = float(req_data["responses"][10])
+
+    # Getting the prediction
+    result_dict = {
+        0: 'Depressed',
+        1: 'Not Depressed',
         2: 'Severely Depressed'
     }
     result_num = model.predict([[Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11]])[0]
     result = result_dict[result_num]
-    return render_template('home.html', **locals())
+
+    # Creating a response JSON object
+    res_data = {
+        'prediction': result
+    }
+
+    return jsonify(res_data)
+
 
 
 if __name__ == "__main__":
