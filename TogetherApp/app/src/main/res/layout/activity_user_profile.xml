@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".UserProfile">
 
-    <include layout="@layout/hamburger"/>
+    <include layout="@layout/hamburger" />
 
     <ImageView
         android:id="@+id/logo"
@@ -19,7 +19,7 @@
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="337dp"
-        android:layout_height="495dp"
+        android:layout_height="490dp"
         android:layout_below="@id/logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
@@ -66,46 +66,108 @@
         <LinearLayout
             android:id="@+id/layout_contacts"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="223dp"
             android:layout_below="@id/txt_add_contacts"
             android:layout_marginTop="180dp"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
-            <EditText
-                android:id="@+id/edt_contact1"
+            <ScrollView
+                android:id="@+id/scrollview1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Contact 1"
-                android:imeOptions="actionDone"
-                android:padding="10dp"
-                android:singleLine="true"
-                android:inputType="phone"
-                android:digits="0123456789+" />
+                android:layout_height="180dp"
+                android:scrollbarStyle="outsideInset"
+                android:verticalScrollbarPosition="defaultPosition"
+                android:visibility="visible">
 
-            <EditText
-                android:id="@+id/edt_contact2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Contact 2"
-                android:imeOptions="actionDone"
-                android:padding="10dp"
-                android:singleLine="true"
-                android:inputType="phone"
-                android:digits="0123456789+" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnSave"
-                android:layout_width="127dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/edt_contact2"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal|top"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/btn_background"
-                android:text="Save"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/edt_contact1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789+"
+                        android:hint="Contact 1"
+                        android:imeOptions="actionDone"
+                        android:inputType="phone"
+                        android:padding="10dp"
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/edt_contact2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789+"
+                        android:hint="Contact 2"
+                        android:imeOptions="actionDone"
+                        android:inputType="phone"
+                        android:padding="10dp"
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/edt_contact3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789+"
+                        android:hint="Contact 3"
+                        android:imeOptions="actionDone"
+                        android:inputType="phone"
+                        android:padding="10dp"
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/edt_contact4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789+"
+                        android:hint="Contact 4"
+                        android:imeOptions="actionDone"
+                        android:inputType="phone"
+                        android:padding="10dp"
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/edt_contact5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789+"
+                        android:hint="Contact 5"
+                        android:imeOptions="actionDone"
+                        android:inputType="phone"
+                        android:padding="10dp"
+                        android:singleLine="true" />
+
+                    <Button
+                        android:id="@+id/btnSave"
+                        android:layout_width="127dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/edt_contact5"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal|top"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/btn_background"
+                        android:text="Save"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/buttonEdit"
+                        android:layout_width="127dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/edt_contact5"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal|top"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/btn_background"
+                        android:text="Edit"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:visibility="invisible" />
+                </LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
 
@@ -115,8 +177,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_name"
             android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal|top"
-            android:layout_marginTop="350dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="200dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/btn_background"
             android:text="Logout"
             android:textColor="@color/white"

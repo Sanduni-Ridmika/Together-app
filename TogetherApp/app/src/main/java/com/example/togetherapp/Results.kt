@@ -28,7 +28,7 @@ class Results : BaseActivity() {
         val prediction = intent.getStringExtra("prediction")
 
         // Display the prediction in the text1 TextView
-        text1.text = "Prediction: $prediction"
+        text1.text = "$prediction"
 
         if(prediction=="Not Depressed"){
             text2.text="Not Depressed"

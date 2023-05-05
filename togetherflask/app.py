@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
+
 import pickle
 
 app = Flask(__name__)
@@ -31,7 +32,12 @@ def predict():
 
     result_num = model.predict([[Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11]])[0]
     result = result_dict[result_num]
-    return render_template('home.html', **locals())
+    return redirect(url_for('show_result', result=result))
+
+@app.route('/result')
+def show_result():
+    result = request.args.get('result')
+    return render_template('results.html', result=result)
 
 
 @app.route('/appPredict', methods=['POST'])
@@ -67,8 +73,6 @@ def app_predict():
     }
 
     return jsonify(res_data)
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
