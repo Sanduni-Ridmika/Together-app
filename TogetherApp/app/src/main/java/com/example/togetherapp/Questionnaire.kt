@@ -137,7 +137,7 @@ class Questionnaire : BaseActivity() {
 
         // Send the user responses to the Flask server using OkHttp
         val request = Request.Builder()
-            .url("  https://d8ca-2402-d000-a500-6459-74f0-5b51-b941-1758.ap.ngrok.io/appPredict")
+            .url("  https://together-385821.uc.r.appspot.com/appPredict")
             .post(requestBody)
             .build()
 
@@ -155,11 +155,7 @@ class Questionnaire : BaseActivity() {
                     val jsonResponse = response.body?.string() ?: "{}"
                     val jsonObject = JSONObject(jsonResponse)
                     prediction = jsonObject.optString("prediction", "Unknown error")
-
-                    // display the prediction response
-                    runOnUiThread {
-                        Toast.makeText(this@Questionnaire, prediction, Toast.LENGTH_LONG).show()
-                    }
+                    
                 } else {
                     // the response is not in JSON format
                     prediction = response.body?.string() ?: "Unknown error"
@@ -169,14 +165,6 @@ class Questionnaire : BaseActivity() {
                     putExtra("prediction", prediction)
                 }
                 startActivity(intent)
-                // Display a success message if the HTTP request succeeds
-                runOnUiThread {
-                    Toast.makeText(
-                        this@Questionnaire,
-                        "Responses have been submitted successfully.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
             }
 
         })
