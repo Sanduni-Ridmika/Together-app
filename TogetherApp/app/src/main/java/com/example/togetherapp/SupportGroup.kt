@@ -31,6 +31,10 @@ class SupportGroup : BaseActivity() {
     private lateinit var text: TextView
     private var c1:String = ""
     private var c2:String = ""
+    private var c3:String = ""
+    private var c4:String = ""
+    private var c5:String = ""
+
     private lateinit var btnAskForHelp: Button
 
     private var locationManager : LocationManager? = null
@@ -39,17 +43,13 @@ class SupportGroup : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_support_group)
+
         val p =  arrayOf(Manifest.permission.SEND_SMS,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION)
         ActivityCompat.requestPermissions(this,p,1);
+
         text = findViewById(R.id.text)
         btnAskForHelp = findViewById(R.id.button)
-
-
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
-
-
-
-
 
         val locationListener: LocationListener = object : LocationListener {
             override fun onLocationChanged(location: Location) {
@@ -83,8 +83,6 @@ class SupportGroup : BaseActivity() {
 
 
         btnAskForHelp.setOnClickListener {
-
-
             var mAuth = FirebaseAuth.getInstance()
             val database = Firebase.database
             val myRef = database.getReference("contacts")
@@ -107,7 +105,6 @@ class SupportGroup : BaseActivity() {
     }
 
 
-
     private fun onAskForHelpClicked(longi :String,lati:String) {
         var mAuth = FirebaseAuth.getInstance()
 
@@ -115,6 +112,7 @@ class SupportGroup : BaseActivity() {
         val myRef = database.getReference("contacts")
 
         myRef.child(mAuth.uid.toString())
+
         var cont1 =  myRef.child(mAuth.uid.toString()).child("contact1").get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value} "+"http//www.google.com/maps/place/"+longi+","+lati)
             c1 = "${it.value}"
@@ -126,6 +124,30 @@ class SupportGroup : BaseActivity() {
             Log.i("firebase", "Got value ${it.value} ")
             c2 = "${it.value}"
             sendSMS(c2,"ALERT Hello! I need help, I am at "+"http//www.google.com/maps/place/"+lati+","+longi)
+
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+        var cont3 =  myRef.child(mAuth.uid.toString()).child("contact3").get().addOnSuccessListener {
+            Log.i("firebase", "Got value ${it.value} ")
+            c3 = "${it.value}"
+            sendSMS(c3,"ALERT Hello! I need help, I am at "+"http//www.google.com/maps/place/"+lati+","+longi)
+
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+        var cont4 =  myRef.child(mAuth.uid.toString()).child("contact4").get().addOnSuccessListener {
+            Log.i("firebase", "Got value ${it.value} ")
+            c4 = "${it.value}"
+            sendSMS(c4,"ALERT Hello! I need help, I am at "+"http//www.google.com/maps/place/"+lati+","+longi)
+
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+        var cont5 =  myRef.child(mAuth.uid.toString()).child("contact5").get().addOnSuccessListener {
+            Log.i("firebase", "Got value ${it.value} ")
+            c5 = "${it.value}"
+            sendSMS(c5,"ALERT Hello! I need help, I am at "+"http//www.google.com/maps/place/"+lati+","+longi)
 
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
