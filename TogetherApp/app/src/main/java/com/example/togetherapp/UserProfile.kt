@@ -1,13 +1,18 @@
 package com.example.togetherapp
 
 import BaseActivity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -19,7 +24,11 @@ class UserProfile : BaseActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var edtContact1: EditText
     private lateinit var edtContact2: EditText
+    private lateinit var edtContact3: EditText
+    private lateinit var edtContact4: EditText
+    private lateinit var edtContact5: EditText
     private lateinit var btnSave: Button
+    private lateinit var btnEdit: Button
     private lateinit var layoutContacts: LinearLayout
     private lateinit var database: FirebaseDatabase
     private lateinit var ref: DatabaseReference
@@ -35,7 +44,11 @@ class UserProfile : BaseActivity() {
         txtEmail = findViewById(R.id.txt_email)
         edtContact1 = findViewById(R.id.edt_contact1)
         edtContact2 = findViewById(R.id.edt_contact2)
+        edtContact3 = findViewById(R.id.edt_contact3)
+        edtContact4 = findViewById(R.id.edt_contact4)
+        edtContact5 = findViewById(R.id.edt_contact5)
         btnSave = findViewById(R.id.btnSave)
+        btnEdit = findViewById(R.id.buttonEdit)
         layoutContacts = findViewById(R.id.layout_contacts)
 
         val btnLogout = findViewById<Button>(R.id.btnLogout)
@@ -56,10 +69,87 @@ class UserProfile : BaseActivity() {
         val database = Firebase.database
         val myRef = database.getReference("contacts")
 
+        val postRef = myRef.child(mAuth.uid.toString())
+
+        postRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    edtContact1.setText(snapshot.children.elementAt(0).value.toString())
+                    edtContact2.setText(snapshot.children.elementAt(1).value.toString())
+                    edtContact3.setText(snapshot.children.elementAt(2).value.toString())
+                    edtContact4.setText(snapshot.children.elementAt(3).value.toString())
+                    edtContact5.setText(snapshot.children.elementAt(4).value.toString())
+
+                    edtContact1.isEnabled = false
+                    edtContact2.isEnabled = false
+                    edtContact3.isEnabled = false
+                    edtContact4.isEnabled = false
+                    edtContact5.isEnabled = false
+                    /* edtContact1.isEnabled = false
+                     edtContact1.isFocusable = false
+                     edtContact2.isEnabled = false
+                     edtContact2.isFocusable = false
+                     edtContact3.isEnabled = false
+                     edtContact3.isFocusable = false
+                     edtContact4.isEnabled = false
+                     edtContact4.isFocusable = false
+                     edtContact5.isEnabled = false
+                     edtContact5.isFocusable = false */
+
+                    btnEdit.isEnabled=true
+                    btnEdit.visibility = View.VISIBLE
+                    btnSave.isEnabled =false
+                    btnSave.visibility = View.INVISIBLE
+
+
+                }else{
+                    edtContact1.isEnabled = true
+                    edtContact2.isEnabled = true
+                    edtContact3.isEnabled = true
+                    edtContact4.isEnabled = true
+                    edtContact5.isEnabled = true
+                    /*   edtContact1.isEnabled = true
+                       edtContact1.isFocusable = true
+                       edtContact2.isEnabled = true
+                       edtContact2.isFocusable = true
+                       edtContact3.isEnabled = true
+                       edtContact3.isFocusable = true
+                       edtContact4.isEnabled = true
+                       edtContact4.isFocusable = true
+                       edtContact5.isEnabled = true
+                       edtContact5.isFocusable = true */
+                    btnSave.isEnabled =true
+                    btnSave.visibility= View.VISIBLE
+                    btnEdit.isEnabled=false
+                    btnEdit.visibility=View.INVISIBLE
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "Database Error", Toast.LENGTH_SHORT).show()
+            }
+        })
+
         // Set click listener for "Save" button
         btnSave.setOnClickListener {
             onSaveClicked( myRef)
+            btnEdit.isEnabled=true
+            btnEdit.visibility = View.VISIBLE
+            btnSave.isEnabled =false
+            btnSave.visibility = View.INVISIBLE
         }
+        btnEdit.setOnClickListener {
+
+
+            onEditClicked(myRef)
+        }
+
+
+        //myRef.setValue("Hello, World!")
+        // Get Firebase database reference
+        // database = FirebaseDatabase.getInstance()
+        //ref = database.getReference("TogetherApp")
 
         btnLogout.setOnClickListener {
             // Log out the user
@@ -68,7 +158,42 @@ class UserProfile : BaseActivity() {
             startActivity(intent)
             finish() // Finish the current activity to prevent going back to the user profile page
         }
+
+        //  showSoftKeyboard(edtContact1)
     }
+
+    /* fun showSoftKeyboard(view: View) {
+         if (view.requestFocus()) {
+             val inputMethodManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+             inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+         }
+     } */
+    fun onEditClicked(myRef: DatabaseReference) {
+
+        // Set the value of the unique key to the contacts object
+        myRef.child(mAuth.uid.toString()).removeValue()
+        edtContact1.isEnabled = true
+        edtContact2.isEnabled = true
+        edtContact3.isEnabled = true
+        edtContact4.isEnabled = true
+        edtContact5.isEnabled = true
+        /*  edtContact1.isEnabled = true
+          edtContact1.isFocusable = true
+          edtContact2.isEnabled = true
+          edtContact2.isFocusable = true
+          edtContact3.isEnabled = true
+          edtContact3.isFocusable = true
+          edtContact4.isEnabled = true
+          edtContact4.isFocusable = true
+          edtContact5.isEnabled = true
+          edtContact5.isFocusable = true */
+        btnSave.isEnabled =true
+        btnSave.visibility= View.VISIBLE
+        btnEdit.isEnabled=false
+        btnEdit.visibility=View.INVISIBLE
+
+    }
+
     // Click event handler for "Add contacts" button
     fun onAddContactsClicked(view: View) {
         val layoutContacts = findViewById<LinearLayout>(R.id.layout_contacts)
@@ -87,26 +212,45 @@ class UserProfile : BaseActivity() {
     fun onSaveClicked(myRef: DatabaseReference) {
         val contact1 = edtContact1.text.toString().trim()
         val contact2 = edtContact2.text.toString().trim()
+        val contact3 = edtContact3.text.toString().trim()
+        val contact4 = edtContact4.text.toString().trim()
+        val contact5 = edtContact5.text.toString().trim()
 
         // Check if both contact fields are not empty
-        if (contact1.isNotEmpty() && contact2.isNotEmpty()) {
+        if (contact1.isNotEmpty() && contact2.isNotEmpty() && contact3.isNotEmpty() && contact4.isNotEmpty() && contact5.isNotEmpty()) {
             // Generate a unique key for the contacts
 
             //val contactsRef = myRef.push()
             // Create Contacts object
-            val contacts = Contacts(contact1, contact2)
+            val contacts = Contacts(contact1, contact2, contact3, contact4, contact5)
             // Set the value of the unique key to the contacts object
             myRef.child(mAuth.uid.toString()).setValue(contacts)
 
-            // Display saved contacts as non-editing texts
+            // Save contact1 and contact2 to Firebase under "contacts" node
+            //val contactsRef = ref.child("contacts")
+            // contactsRef.child("contact1").setValue(contact1)
+            //contactsRef.child("contact2").setValue(contact2)
+
             edtContact1.isEnabled = false
-            edtContact1.isFocusable = false
             edtContact2.isEnabled = false
-            edtContact2.isFocusable = false
+            edtContact3.isEnabled = false
+            edtContact4.isEnabled = false
+            edtContact5.isEnabled = false
+            // Display saved contacts as non-editing texts
+            /*  edtContact1.isEnabled = false
+              edtContact1.isFocusable = false
+              edtContact2.isEnabled = false
+              edtContact2.isFocusable = false
+              edtContact3.isEnabled = false
+              edtContact3.isFocusable = false
+              edtContact4.isEnabled = false
+              edtContact4.isFocusable = false
+              edtContact5.isEnabled = false
+              edtContact5.isFocusable = false  */
 
             Toast.makeText(this, "Contacts saved successfully", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, "Please enter both contacts", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please enter all 5 contacts", Toast.LENGTH_SHORT).show()
         }
     }
 }

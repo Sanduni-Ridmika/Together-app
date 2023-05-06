@@ -155,7 +155,7 @@ class Questionnaire : BaseActivity() {
                     val jsonResponse = response.body?.string() ?: "{}"
                     val jsonObject = JSONObject(jsonResponse)
                     prediction = jsonObject.optString("prediction", "Unknown error")
-                    
+
                 } else {
                     // the response is not in JSON format
                     prediction = response.body?.string() ?: "Unknown error"
