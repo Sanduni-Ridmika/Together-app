@@ -26,17 +26,17 @@ class Questionnaire : BaseActivity() {
 
     // defining the questions list
     private val questions = listOf(
-        "Little interest or pleasure in doing things?",
-        "Feeling down, depressed, or hopeless?",
-        "Trouble falling or staying asleep, or sleeping too much?",
-        "Feeling tired or having little energy?",
-        "Poor appetite or overeating?",
-        "Feeling memory loss or having trouble remembering?",
-        "Feeling bad about yourself or that you are a failure or have let yourself or your family down?",
-        "Trouble concentrating on things, such as reading the newspaper or watching television?",
-        "Moving or speaking so slowly or have been moving around a lot more than usual that other people could have noticed?",
-        "Aches or pains, headaches, cramps, or digestive problems without a clear physical cause and/or that do not ease even with treatment?",
-        "Thoughts that you would be better off dead, or hurting yourself in some way?"
+        "1. Little interest or pleasure in doing things?",
+        "2. Feeling down, depressed, or hopeless?",
+        "3. Trouble falling or staying asleep, or sleeping too much?",
+        "4. Feeling tired or having little energy?",
+        "5. Poor appetite or overeating?",
+        "6. Feeling memory loss or having trouble remembering?",
+        "7. Feeling bad about yourself or that you are a failure or have let yourself or your family down?",
+        "8. Trouble concentrating on things, such as reading the newspaper or watching television?",
+        "9. Moving or speaking so slowly or have been moving around a lot more than usual that other people could have noticed?",
+        "10. Aches or pains, headaches, cramps, or digestive problems without a clear physical cause and/or that do not ease even with treatment?",
+        "11. Thoughts that you would be better off dead, or hurting yourself in some way?"
     )
     private val radioButtonValues = mapOf(
         R.id.option1_radio_button to 0,

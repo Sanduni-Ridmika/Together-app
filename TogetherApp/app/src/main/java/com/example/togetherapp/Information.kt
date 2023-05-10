@@ -22,7 +22,7 @@ class Information : BaseActivity() {
             val intent = Intent(this, InfoDisplay::class.java)
             intent.putExtra("question", "What is Depression?")
             intent.putExtra("detail", "Depression is a mental health disorder characterized by persistent feelings of sadness, hopelessness, and a loss of interest or pleasure in activities that a person used to enjoy. It can also cause physical symptoms such as fatigue, changes in appetite, and difficulty sleeping.\n" +
-                    "The exact causes of depression are not fully understood, but it is believed to be the result of a combination of genetic, environmental, and psychological factors. Some common triggers of depression include stress, trauma, major life changes, medical conditions, and substance abuse. It's important to seek professional help if you or someone you know is experiencing symptoms of depression.")
+                    "The exact causes of depression are not fully understood, but it is believed to be the result of a combination of genetic, environmental, and psychological factors.")
             startActivity(intent)
         }
 

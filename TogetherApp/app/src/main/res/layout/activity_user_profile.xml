@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".UserProfile">
 
     <include layout="@layout/hamburger" />
@@ -18,8 +19,8 @@
 
     <FrameLayout
         android:id="@+id/frame"
-        android:layout_width="337dp"
-        android:layout_height="490dp"
+        android:layout_width="320dp"
+        android:layout_height="450dp"
         android:layout_below="@id/logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
@@ -87,51 +88,55 @@
 
                     <EditText
                         android:id="@+id/edt_contact1"
-                        android:layout_width="match_parent"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:digits="0123456789+"
                         android:hint="Contact 1"
                         android:imeOptions="actionDone"
                         android:inputType="phone"
                         android:padding="10dp"
+                        android:layout_marginLeft="16dp"
                         android:singleLine="true" />
 
                     <EditText
                         android:id="@+id/edt_contact2"
-                        android:layout_width="match_parent"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:digits="0123456789+"
                         android:hint="Contact 2"
                         android:imeOptions="actionDone"
                         android:inputType="phone"
                         android:padding="10dp"
+                        android:layout_marginLeft="16dp"
                         android:singleLine="true" />
 
                     <EditText
                         android:id="@+id/edt_contact3"
-                        android:layout_width="match_parent"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:digits="0123456789+"
                         android:hint="Contact 3"
                         android:imeOptions="actionDone"
                         android:inputType="phone"
                         android:padding="10dp"
+                        android:layout_marginLeft="16dp"
                         android:singleLine="true" />
 
                     <EditText
                         android:id="@+id/edt_contact4"
-                        android:layout_width="match_parent"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:digits="0123456789+"
                         android:hint="Contact 4"
                         android:imeOptions="actionDone"
                         android:inputType="phone"
                         android:padding="10dp"
+                        android:layout_marginLeft="16dp"
                         android:singleLine="true" />
 
                     <EditText
                         android:id="@+id/edt_contact5"
-                        android:layout_width="match_parent"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:digits="0123456789+"
                         android:hint="Contact 5"
