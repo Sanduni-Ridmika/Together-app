@@ -17,31 +17,51 @@
         android:layout_marginTop="30dp"
         android:src="@drawable/namelogo" />
 
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_marginTop="10dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="1"
+        android:columnOrderPreserved="false"
+        android:rowCount="2"
+        android:useDefaultMargins="true">
+
     <Button
         android:id="@+id/button1"
-        android:layout_width="320dp"
-        android:layout_height="95dp"
-        android:layout_below="@id/logo"
-        android:layout_marginTop="100dp"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/box_background"
+        android:drawableTop="@drawable/med1"
+        android:paddingTop="22dp"
+        android:paddingBottom="10dp"
         android:text="Breathing Exercise"
-        android:layout_centerHorizontal="true"
         android:textColor="#2C6D80"
-        android:textSize="17sp"
-        android:visibility="visible" />
+        android:textSize="17sp" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="320dp"
-        android:layout_height="95dp"
-        android:layout_below="@id/button1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/box_background"
+        android:drawableTop="@drawable/med2"
+        android:paddingTop="22dp"
+        android:paddingBottom="10dp"
         android:text="Mind-relaxing Music"
         android:textColor="#2C6D80"
-        android:textSize="17sp"
-        android:visibility="visible" />
+        android:textSize="17sp" />
+
+    </GridLayout>
 
 </RelativeLayout>

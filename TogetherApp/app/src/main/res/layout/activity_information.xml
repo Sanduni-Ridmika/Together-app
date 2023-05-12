@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,56 +18,87 @@
         android:layout_marginTop="30dp"
         android:src="@drawable/namelogo"/>
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="320dp"
-        android:layout_height="95dp"
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/logo"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:background="@drawable/box_background"
-        android:text="What is Depression ?"
-        android:textColor="#2C6D80"
-        android:textSize="17sp"
-        android:visibility="visible" />
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:columnOrderPreserved="false"
+        android:rowCount="2"
+        android:useDefaultMargins="true">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="320dp"
-        android:layout_height="95dp"
-        android:layout_below="@id/button1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:background="@drawable/box_background"
-        android:text="Symptoms"
-        android:textColor="#2C6D80"
-        android:textSize="17sp"
-        android:visibility="visible" />
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/box_background"
+            android:drawableTop="@drawable/info1"
+            android:paddingTop="22dp"
+            android:paddingBottom="10dp"
+            android:text="What is Depression?"
+            android:textColor="#2C6D80"
+            android:textSize="16.6sp" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="320dp"
-        android:layout_height="95dp"
-        android:layout_below="@id/button2"
-        android:layout_marginTop="22dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/box_background"
-        android:text="Treatments"
-        android:textColor="#2C6D80"
-        android:textSize="17sp"
-        android:visibility="visible" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/box_background"
+            android:drawableTop="@drawable/info2"
+            android:paddingTop="22dp"
+            android:paddingBottom="10dp"
+            android:text="Symptoms"
+            android:textColor="#2C6D80"
+            android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="320dp"
-        android:layout_height="95dp"
-        android:layout_below="@id/button3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:background="@drawable/box_background"
-        android:text="Local Support Centers"
-        android:textColor="#2C6D80"
-        android:textSize="17sp"
-        android:visibility="visible" />
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/box_background"
+            android:drawableTop="@drawable/info3"
+            android:paddingTop="22dp"
+            android:paddingBottom="10dp"
+            android:text="Treatments"
+            android:textColor="#2C6D80"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/box_background"
+            android:drawableTop="@drawable/info4"
+            android:paddingTop="22dp"
+            android:paddingBottom="10dp"
+            android:text="Local Support Centers"
+            android:textColor="#2C6D80"
+            android:textSize="16sp" />
+
+    </GridLayout>
 
 </RelativeLayout>

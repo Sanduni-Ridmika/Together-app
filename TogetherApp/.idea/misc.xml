@@ -12,8 +12,18 @@
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/detection_icon.xml" value="0.15" />
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/edt_background.xml" value="0.165" />
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/hamburger.xml" value="0.142" />
+        <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/home1.xml" value="0.1575" />
+        <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/home2.xml" value="0.1575" />
+        <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/home3.xml" value="0.1575" />
+        <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/home4.xml" value="0.1575" />
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.165" />
+        <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/info1.xml" value="0.16" />
+        <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/info2.xml" value="0.1575" />
+        <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/info3.xml" value="0.1575" />
+        <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/info4.xml" value="0.1575" />
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/information_icon.xml" value="0.15" />
+        <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/med1.xml" value="0.1575" />
+        <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/med2.xml" value="0.1575" />
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/meditation_icon.xml" value="0.1575" />
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/pause.xml" value="0.138" />
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/drawable/pausetoggle.xml" value="0.1065" />
@@ -27,7 +37,7 @@
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/layout/activity_breathing.xml" value="0.17395833333333333" />
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/layout/activity_info_display.xml" value="0.22" />
-        <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/layout/activity_information.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/layout/activity_information.xml" value="0.25" />
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/layout/activity_log_in.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Sanduni Ridmika/Desktop/FYP/TogetherApp/app/src/main/res/layout/activity_meditations.xml" value="0.18802083333333333" />
