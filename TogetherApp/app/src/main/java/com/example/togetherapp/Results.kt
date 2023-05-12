@@ -38,12 +38,17 @@ class Results : BaseActivity() {
 
         val boldSpan = StyleSpan(Typeface.BOLD)
         val colorSpan = ForegroundColorSpan(Color.parseColor("#b30000"))
+        val colorSpan1 = ForegroundColorSpan(Color.parseColor("#1f7a1f"))
         val sizeSpan = AbsoluteSizeSpan(18, true)
 
         // Display the prediction in the TextView
         if(prediction=="Not Depressed"){
-            text1.text= "Congratulations!\n\n" + "you're not suffering from Depression."
-            text2.text="The responses you have given indicate that you're not suffering from depression."
+            val spannable = SpannableString("Congratulations! These results indicate that you’re\n\n Not Depressed")
+            spannable.setSpan(boldSpan, 53, 67, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            spannable.setSpan(colorSpan1, 53, 67, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            spannable.setSpan(sizeSpan, 53, 67, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            text1.text = spannable
+            text2.text="The responses you have given indicate that you're not suffering from depression. However, if you have concerns we would always suggest you to seek for professional help and support."
             stressMeter.setImageResource(R.drawable.scale1)
         }
 

@@ -39,17 +39,24 @@
             android:textColor="@android:color/black"
             android:textSize="22sp" />
 
-        <TextView
-            android:id="@+id/detail_text"
-            android:layout_width="288dp"
-            android:layout_height="400dp"
+        <ScrollView
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/question_text"
             android:layout_gravity="center_horizontal|top"
-            android:layout_marginTop="60dp"
-            android:paddingTop="30dp"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:paddingBottom="30dp"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="70dp">
 
+            <TextView
+                android:id="@+id/detail_text"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:paddingBottom="30dp"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+        </ScrollView>
     </FrameLayout>
-
 </RelativeLayout>
