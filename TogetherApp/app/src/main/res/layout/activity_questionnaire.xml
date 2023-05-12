@@ -21,7 +21,7 @@
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="325dp"
-        android:layout_height="450dp"
+        android:layout_height="440dp"
         android:layout_below="@id/logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
@@ -35,8 +35,8 @@
             android:layout_width="289dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|top"
-            android:layout_marginTop="30dp"
-            android:text="Have you been forgetting things?"
+            android:layout_marginTop="25dp"
+            android:text="10. Aches or pains, headaches, cramps, or digestive problems without a clear physical cause and/or that do not ease even with treatment?"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -45,7 +45,7 @@
             android:layout_width="301dp"
             android:layout_height="167dp"
             android:layout_gravity="center_horizontal|top"
-            android:layout_marginTop="150dp">
+            android:layout_marginTop="140dp">
 
             <RadioButton
                 android:id="@+id/option1_radio_button"
@@ -79,7 +79,7 @@
         <LinearLayout
             android:id="@+id/buttons_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="44dp"
             android:layout_gravity="center_horizontal|bottom"
             android:orientation="horizontal"
             android:layout_marginTop="16dp"
