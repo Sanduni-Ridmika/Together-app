@@ -1,9 +1,12 @@
 package com.example.togetherapp
 
 import BaseActivity
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.ToggleButton
 import com.google.firebase.storage.FirebaseStorage
@@ -26,6 +29,14 @@ class Music : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_music)
+
+        //home button action
+        val homeButton = findViewById<ImageButton>(R.id.homebutton)
+        homeButton.setOnClickListener {
+            val intent = Intent(this, Home::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         storageRef = FirebaseStorage.getInstance().getReference()
         mediaPlayer = MediaPlayer()
@@ -285,4 +296,5 @@ class Music : BaseActivity() {
         super.onDestroy()
         stopMediaPlayer()
     }
+
 }

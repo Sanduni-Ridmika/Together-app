@@ -1,11 +1,9 @@
 package com.example.togetherapp
 
 import BaseActivity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -29,6 +27,7 @@ class UserProfile : BaseActivity() {
     private lateinit var edtContact5: EditText
     private lateinit var btnSave: Button
     private lateinit var btnEdit: Button
+    private lateinit var btnLogout: Button
     private lateinit var layoutContacts: LinearLayout
     private lateinit var database: FirebaseDatabase
     private lateinit var ref: DatabaseReference
@@ -36,6 +35,14 @@ class UserProfile : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
+
+        //home button action
+        val homeButton = findViewById<ImageButton>(R.id.homebutton)
+        homeButton.setOnClickListener {
+            val intent = Intent(this, Home::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         mAuth = FirebaseAuth.getInstance()
 
@@ -49,9 +56,10 @@ class UserProfile : BaseActivity() {
         edtContact5 = findViewById(R.id.edt_contact5)
         btnSave = findViewById(R.id.btnSave)
         btnEdit = findViewById(R.id.buttonEdit)
+        btnLogout = findViewById(R.id.btnLogout)
         layoutContacts = findViewById(R.id.layout_contacts)
 
-        val btnLogout = findViewById<Button>(R.id.btnLogout)
+       // val btnLogout = findViewById<Button>(R.id.btnLogout)
         // Get the currently logged in user
         val currentUser = mAuth.currentUser
 
@@ -60,6 +68,8 @@ class UserProfile : BaseActivity() {
             txtName.text = "Name: ${currentUser.displayName}"
             txtEmail.text = "Email: ${currentUser.email}"
         }
+        layoutContacts.visibility = View.GONE
+
 
         // Set click listener for "Add contacts" button
         val txtAddContacts = findViewById<TextView>(R.id.txt_add_contacts)
@@ -85,16 +95,6 @@ class UserProfile : BaseActivity() {
                     edtContact3.isEnabled = false
                     edtContact4.isEnabled = false
                     edtContact5.isEnabled = false
-                    /* edtContact1.isEnabled = false
-                     edtContact1.isFocusable = false
-                     edtContact2.isEnabled = false
-                     edtContact2.isFocusable = false
-                     edtContact3.isEnabled = false
-                     edtContact3.isFocusable = false
-                     edtContact4.isEnabled = false
-                     edtContact4.isFocusable = false
-                     edtContact5.isEnabled = false
-                     edtContact5.isFocusable = false */
 
                     btnEdit.isEnabled=true
                     btnEdit.visibility = View.VISIBLE
@@ -108,16 +108,7 @@ class UserProfile : BaseActivity() {
                     edtContact3.isEnabled = true
                     edtContact4.isEnabled = true
                     edtContact5.isEnabled = true
-                    /*   edtContact1.isEnabled = true
-                       edtContact1.isFocusable = true
-                       edtContact2.isEnabled = true
-                       edtContact2.isFocusable = true
-                       edtContact3.isEnabled = true
-                       edtContact3.isFocusable = true
-                       edtContact4.isEnabled = true
-                       edtContact4.isFocusable = true
-                       edtContact5.isEnabled = true
-                       edtContact5.isFocusable = true */
+
                     btnSave.isEnabled =true
                     btnSave.visibility= View.VISIBLE
                     btnEdit.isEnabled=false
@@ -145,12 +136,6 @@ class UserProfile : BaseActivity() {
             onEditClicked(myRef)
         }
 
-
-        //myRef.setValue("Hello, World!")
-        // Get Firebase database reference
-        // database = FirebaseDatabase.getInstance()
-        //ref = database.getReference("TogetherApp")
-
         btnLogout.setOnClickListener {
             // Log out the user
             FirebaseAuth.getInstance().signOut()
@@ -159,15 +144,8 @@ class UserProfile : BaseActivity() {
             finish() // Finish the current activity to prevent going back to the user profile page
         }
 
-        //  showSoftKeyboard(edtContact1)
     }
 
-    /* fun showSoftKeyboard(view: View) {
-         if (view.requestFocus()) {
-             val inputMethodManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-             inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
-         }
-     } */
     fun onEditClicked(myRef: DatabaseReference) {
 
         // Set the value of the unique key to the contacts object
@@ -177,16 +155,7 @@ class UserProfile : BaseActivity() {
         edtContact3.isEnabled = true
         edtContact4.isEnabled = true
         edtContact5.isEnabled = true
-        /*  edtContact1.isEnabled = true
-          edtContact1.isFocusable = true
-          edtContact2.isEnabled = true
-          edtContact2.isFocusable = true
-          edtContact3.isEnabled = true
-          edtContact3.isFocusable = true
-          edtContact4.isEnabled = true
-          edtContact4.isFocusable = true
-          edtContact5.isEnabled = true
-          edtContact5.isFocusable = true */
+
         btnSave.isEnabled =true
         btnSave.visibility= View.VISIBLE
         btnEdit.isEnabled=false
@@ -202,9 +171,13 @@ class UserProfile : BaseActivity() {
         // Toggle visibility of contact input fields
         if (layoutContacts.visibility == View.VISIBLE) {
             layoutContacts.visibility = View.GONE
+            btnLogout.visibility = View.VISIBLE
+            btnEdit.visibility=View.INVISIBLE
             txtAddContacts.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.`arrow_down`, 0)
         } else {
             layoutContacts.visibility = View.VISIBLE
+            btnLogout.visibility = View.INVISIBLE
+            btnEdit.visibility=View.VISIBLE
             txtAddContacts.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.`arrow_up`, 0)
         }
     }
@@ -218,35 +191,18 @@ class UserProfile : BaseActivity() {
 
         // Check if both contact fields are not empty
         if (contact1.isNotEmpty() && contact2.isNotEmpty() && contact3.isNotEmpty() && contact4.isNotEmpty() && contact5.isNotEmpty()) {
-            // Generate a unique key for the contacts
 
-            //val contactsRef = myRef.push()
-            // Create Contacts object
             val contacts = Contacts(contact1, contact2, contact3, contact4, contact5)
             // Set the value of the unique key to the contacts object
             myRef.child(mAuth.uid.toString()).setValue(contacts)
 
-            // Save contact1 and contact2 to Firebase under "contacts" node
-            //val contactsRef = ref.child("contacts")
-            // contactsRef.child("contact1").setValue(contact1)
-            //contactsRef.child("contact2").setValue(contact2)
 
             edtContact1.isEnabled = false
             edtContact2.isEnabled = false
             edtContact3.isEnabled = false
             edtContact4.isEnabled = false
             edtContact5.isEnabled = false
-            // Display saved contacts as non-editing texts
-            /*  edtContact1.isEnabled = false
-              edtContact1.isFocusable = false
-              edtContact2.isEnabled = false
-              edtContact2.isFocusable = false
-              edtContact3.isEnabled = false
-              edtContact3.isFocusable = false
-              edtContact4.isEnabled = false
-              edtContact4.isFocusable = false
-              edtContact5.isEnabled = false
-              edtContact5.isFocusable = false  */
+
 
             Toast.makeText(this, "Contacts saved successfully", Toast.LENGTH_SHORT).show()
         } else {

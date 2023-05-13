@@ -8,13 +8,14 @@
     tools:context=".UserProfile">
 
     <include layout="@layout/hamburger" />
+    <include layout="@layout/homebutton"/>
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="316dp"
         android:layout_height="144dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:src="@drawable/namelogo" />
 
     <FrameLayout
@@ -76,7 +77,7 @@
             <ScrollView
                 android:id="@+id/scrollview1"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="200dp"
                 android:scrollbarStyle="outsideInset"
                 android:verticalScrollbarPosition="defaultPosition"
                 android:visibility="visible">
@@ -146,36 +147,39 @@
                         android:layout_marginLeft="16dp"
                         android:singleLine="true" />
 
-                    <Button
-                        android:id="@+id/btnSave"
-                        android:layout_width="127dp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/edt_contact5"
-                        android:layout_centerHorizontal="true"
-                        android:layout_gravity="center_horizontal|top"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/btn_background"
-                        android:text="Save"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-
-                    <Button
-                        android:id="@+id/buttonEdit"
-                        android:layout_width="127dp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/edt_contact5"
-                        android:layout_centerHorizontal="true"
-                        android:layout_gravity="center_horizontal|top"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/btn_background"
-                        android:text="Edit"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:visibility="invisible" />
                 </LinearLayout>
+
             </ScrollView>
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="127dp"
+            android:layout_height="48dp"
+            android:layout_below="@id/txt_add_contacts"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="372dp"
+            android:background="@drawable/btn_background"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/buttonEdit"
+            android:layout_width="127dp"
+            android:layout_height="48dp"
+            android:layout_below="@id/txt_add_contacts"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="372dp"
+            android:background="@drawable/btn_background"
+            android:text="Edit"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/btnLogout"

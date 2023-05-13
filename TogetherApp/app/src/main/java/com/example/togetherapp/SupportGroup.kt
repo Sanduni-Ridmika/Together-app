@@ -18,6 +18,7 @@ import android.location.LocationListener
 import android.location.LocationManager
 
 import android.widget.Button
+import android.widget.ImageButton
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -43,6 +44,14 @@ class SupportGroup : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_support_group)
+
+        //home button action
+        val homeButton = findViewById<ImageButton>(R.id.homebutton)
+        homeButton.setOnClickListener {
+            val intent = Intent(this, Home::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         val p =  arrayOf(Manifest.permission.SEND_SMS,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION)
         ActivityCompat.requestPermissions(this,p,1);
@@ -89,8 +98,8 @@ class SupportGroup : BaseActivity() {
             myRef.child(mAuth.uid.toString()).addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
-
                         onAskForHelpClicked(mylocation_long,mylocation_lati)
+                        Toast.makeText(applicationContext, "Message send Successfully", Toast.LENGTH_SHORT).show()
 
                     } else {
                         Toast.makeText(applicationContext, "Please add contacts to your support group", Toast.LENGTH_SHORT).show()

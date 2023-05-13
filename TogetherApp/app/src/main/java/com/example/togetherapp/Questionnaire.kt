@@ -2,19 +2,14 @@ package com.example.togetherapp
 
 import BaseActivity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-import com.google.firebase.auth.FirebaseAuth
-import okhttp3.*
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.OkHttpClient
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 
@@ -60,6 +55,14 @@ class Questionnaire : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_questionnaire)
+
+        //home button action
+        val homeButton = findViewById<ImageButton>(R.id.homebutton)
+        homeButton.setOnClickListener {
+            val intent = Intent(this, Home::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         // Initialize UI elements
         previousButton = findViewById(R.id.previous_button)
@@ -171,26 +174,3 @@ class Questionnaire : BaseActivity() {
     }
 
 }
-
-/*
-            override fun onResponse(call: Call, response: Response) {
-
-                // save prediction response
-                val prediction = response.body?.string() ?: "Unknown error"
-
-                // Display the response body in a toast message
-                runOnUiThread {
-                    Toast.makeText(this@Questionnaire, "Response: $prediction", Toast.LENGTH_LONG).show()
-                }
-                /*
-                val intent = Intent(this@Questionnaire, Results::class.java).apply {
-                    putExtra("prediction", prediction)
-                }
-                startActivity(intent)
-
-                // Display a success message if the HTTP request succeeds
-                runOnUiThread {
-                    Toast.makeText(this@Questionnaire, "Responses have been submitted successfully.", Toast.LENGTH_SHORT).show()
-                }*/
-
- */

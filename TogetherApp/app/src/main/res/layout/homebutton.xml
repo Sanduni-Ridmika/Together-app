@@ -4,14 +4,12 @@
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/hamburgerButton"
+        android:id="@+id/homebutton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="5dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/hamburger" />
-
+        android:src="@drawable/homebutton" />
 
 </RelativeLayout>

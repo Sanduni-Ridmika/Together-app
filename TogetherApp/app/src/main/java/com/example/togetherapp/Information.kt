@@ -2,15 +2,9 @@ package com.example.togetherapp
 
 import BaseActivity
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.BulletSpan
-import android.text.style.StyleSpan
 import android.widget.Button
+import android.widget.ImageButton
 
 class Information : BaseActivity() {
     private lateinit var button1: Button
@@ -21,6 +15,14 @@ class Information : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_information)
+
+        //home button action
+        val homeButton = findViewById<ImageButton>(R.id.homebutton)
+        homeButton.setOnClickListener {
+            val intent = Intent(this, Home::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         // Set up click listener for button1
         button1 = findViewById(R.id.button1)

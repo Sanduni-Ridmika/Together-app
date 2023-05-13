@@ -2,16 +2,12 @@ package com.example.togetherapp
 
 import BaseActivity
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.text.Spanned
-import android.view.View
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
-import java.util.regex.Pattern
 
 class InfoDisplay : BaseActivity() {
     private lateinit var question_text: TextView
@@ -20,6 +16,14 @@ class InfoDisplay : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_display)
+
+        //home button action
+        val homeButton = findViewById<ImageButton>(R.id.homebutton)
+        homeButton.setOnClickListener {
+            val intent = Intent(this, Home::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         question_text = findViewById(R.id.question_text)
         detail_text = findViewById(R.id.detail_text)

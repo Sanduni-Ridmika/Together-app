@@ -4,14 +4,15 @@ import BaseActivity
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
+import android.view.MenuItem
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 
@@ -22,6 +23,15 @@ class Results : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
+
+        //home button action
+        val homeButton = findViewById<ImageButton>(R.id.homebutton)
+        homeButton.setOnClickListener {
+            val intent = Intent(this, Home::class.java)
+            startActivity(intent)
+            finish()
+        }
+
 
         val stressMeter = findViewById<ImageView>(R.id.scale)
 
@@ -72,4 +82,5 @@ class Results : BaseActivity() {
             stressMeter.setImageResource(R.drawable.scale3)
         }
     }
+
 }

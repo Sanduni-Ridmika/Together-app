@@ -2,9 +2,10 @@ package com.example.togetherapp
 
 import BaseActivity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
+
 
 class Meditations : BaseActivity() {
 
@@ -15,6 +16,14 @@ class Meditations : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meditations)
+
+        //home button action
+        val homeButton = findViewById<ImageButton>(R.id.homebutton)
+        homeButton.setOnClickListener {
+            val intent = Intent(this, Home::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         button1 = findViewById(R.id.button1)
         button1.setOnClickListener {

@@ -8,13 +8,14 @@
     tools:context=".Breathing">
 
     <include layout="@layout/hamburger"/>
+    <include layout="@layout/homebutton"/>
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="316dp"
         android:layout_height="144dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:src="@drawable/namelogo" />
 
     <Button

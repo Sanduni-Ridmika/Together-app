@@ -1,13 +1,14 @@
 package com.example.togetherapp
 
 import BaseActivity
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 
 class Breathing : BaseActivity() {
@@ -28,6 +29,13 @@ class Breathing : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_breathing)
 
+        //home button action
+        val homeButton = findViewById<ImageButton>(R.id.homebutton)
+        homeButton.setOnClickListener {
+            val intent = Intent(this, Home::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         playButton = findViewById(R.id.button)
         timerText = findViewById(R.id.timer_text)
