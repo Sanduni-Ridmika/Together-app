@@ -143,6 +143,7 @@
                         android:imeOptions="actionDone"
                         android:inputType="phone"
                         android:padding="10dp"
+                        android:layout_marginLeft="16dp"
                         android:singleLine="true" />
 
                     <Button
