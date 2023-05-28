@@ -22,6 +22,9 @@ class Music : BaseActivity() {
     private lateinit var seekBar3: SeekBar
     private lateinit var seekBar4: SeekBar
     private lateinit var seekBar5: SeekBar
+    private lateinit var seekBar6: SeekBar
+    private lateinit var seekBar7: SeekBar
+    private lateinit var seekBar8: SeekBar
 
     private var timer: Timer? = null
     private var currentPlayingToggle: ToggleButton? = null
@@ -46,7 +49,7 @@ class Music : BaseActivity() {
             if (isChecked) {
                 stopMediaPlayer()
                 try {
-                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Calm-and-Peaceful.mp3?alt=media&token=d3f1cfc7-4aae-4e27-bd80-df3f5dcbe47d")
+                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/0057.%20Asian%20-%20AShamaluevMusic.mp3?alt=media&token=56f0b9b4-37d8-4db1-a3c6-0dd672fd512f")
                     mediaPlayer.prepare()
                     mediaPlayer.setOnCompletionListener {
                         playPauseToggle1.post {
@@ -78,7 +81,7 @@ class Music : BaseActivity() {
             if (isChecked) {
                 stopMediaPlayer()
                 try {
-                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/Rain.mp3?alt=media&token=598f75a1-e06c-4a8d-8108-d41981280a13")
+                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/mixkit-yoga-tune-325.mp3?alt=media&token=92eff05f-171a-459e-ae72-9a36c0c23cb6")
                     mediaPlayer.prepare()
                     mediaPlayer.setOnCompletionListener {
                         playPauseToggle2.post {
@@ -110,7 +113,7 @@ class Music : BaseActivity() {
             if (isChecked) {
                 stopMediaPlayer()
                 try {
-                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/dcpoke__birds-singing-03.mp3?alt=media&token=ec1343d7-236f-487d-b9e8-0a1bc7d7629e")
+                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/mixkit-spiritual-moment-525.mp3?alt=media&token=2c691f55-322e-421a-977e-a9302291d296")
                     mediaPlayer.prepare()
                     mediaPlayer.setOnCompletionListener {
                         playPauseToggle1.post {
@@ -201,6 +204,102 @@ class Music : BaseActivity() {
             }
         }
 
+        val playPauseToggle6 = findViewById<ToggleButton>(R.id.play_pause_toggle6)
+        playPauseToggle6.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                stopMediaPlayer()
+                try {
+                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/dcpoke__birds-singing-03.mp3?alt=media&token=ec1343d7-236f-487d-b9e8-0a1bc7d7629e")
+                    mediaPlayer.prepare()
+                    mediaPlayer.setOnCompletionListener {
+                        playPauseToggle6.post {
+                            mediaPlayer.reset()
+                            seekBar6.progress = 0
+                            playPauseToggle1.isChecked = false
+                            currentPlayingToggle = null
+                        }
+                    }
+                    mediaPlayer.start()
+                    if (seekBar6.progress > 0) { // Check if progress is not at the beginning
+                        mediaPlayer.seekTo(seekBar6.progress) // Resume from the current progress
+                    }
+                    seekBar6.max = mediaPlayer.duration
+                    startSeekBarUpdate(seekBar6, mediaPlayer)
+                    currentPlayingToggle = playPauseToggle6
+                    playPauseToggle6.isChecked = true
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            } else {
+                mediaPlayer.pause()
+                stopSeekBarUpdate()
+            }
+        }
+
+        val playPauseToggle7 = findViewById<ToggleButton>(R.id.play_pause_toggle7)
+        playPauseToggle7.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                stopMediaPlayer()
+                try {
+                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/mixkit-nature-meditation-345.mp3?alt=media&token=0e99fefe-83f6-4816-a84a-13eca7c9190d")
+                    mediaPlayer.prepare()
+                    mediaPlayer.setOnCompletionListener {
+                        playPauseToggle7.post {
+                            mediaPlayer.reset()
+                            seekBar7.progress = 0
+                            playPauseToggle7.isChecked = false
+                            currentPlayingToggle = null
+                        }
+                    }
+                    mediaPlayer.start()
+                    if (seekBar7.progress > 0) {
+                        mediaPlayer.seekTo(seekBar7.progress)
+                    }
+                    seekBar7.max = mediaPlayer.duration
+                    startSeekBarUpdate(seekBar7, mediaPlayer)
+                    currentPlayingToggle = playPauseToggle7
+                    playPauseToggle7.isChecked = true
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            } else {
+                mediaPlayer.pause()
+                stopSeekBarUpdate()
+            }
+        }
+
+        val playPauseToggle8 = findViewById<ToggleButton>(R.id.play_pause_toggle8)
+        playPauseToggle8.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                stopMediaPlayer()
+                try {
+                    mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/togetherapp-cabdf.appspot.com/o/burghrecords__birds-singing-forest-scotland.mp3?alt=media&token=d287f011-4806-40c4-8b23-4c55f4e72d42")
+                    mediaPlayer.prepare()
+                    mediaPlayer.setOnCompletionListener {
+                        playPauseToggle8.post {
+                            mediaPlayer.reset()
+                            seekBar8.progress = 0
+                            playPauseToggle8.isChecked = false
+                            currentPlayingToggle = null
+                        }
+                    }
+                    mediaPlayer.start()
+                    if (seekBar8.progress > 0) {
+                        mediaPlayer.seekTo(seekBar8.progress)
+                    }
+                    seekBar8.max = mediaPlayer.duration
+                    startSeekBarUpdate(seekBar8, mediaPlayer)
+                    currentPlayingToggle = playPauseToggle8
+                    playPauseToggle8.isChecked = true
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            } else {
+                mediaPlayer.pause()
+                stopSeekBarUpdate()
+            }
+        }
+
         seekBar1 = findViewById<SeekBar>(R.id.seekBar1)
         seekBar1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -255,6 +354,45 @@ class Music : BaseActivity() {
 
         seekBar5 = findViewById<SeekBar>(R.id.seekBar5)
         seekBar5.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    mediaPlayer.seekTo(progress)
+                }
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+        })
+
+        seekBar6 = findViewById<SeekBar>(R.id.seekBar6)
+        seekBar6.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    mediaPlayer.seekTo(progress)
+                }
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+        })
+
+        seekBar7 = findViewById<SeekBar>(R.id.seekBar7)
+        seekBar7.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    mediaPlayer.seekTo(progress)
+                }
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+        })
+
+        seekBar8 = findViewById<SeekBar>(R.id.seekBar8)
+        seekBar8.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
                     mediaPlayer.seekTo(progress)

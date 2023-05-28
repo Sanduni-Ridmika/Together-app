@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:id="@+id/music_activity_layout"
     tools:context=".Music">
 
     <include layout="@layout/hamburger"/>
@@ -18,108 +20,114 @@
         android:layout_marginTop="50dp"
         android:src="@drawable/namelogo" />
 
-    <TextView
-        android:id="@+id/Text1"
-        android:text="Forest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/logo"
-        android:textColor="#2C6D80"
-        android:textSize="16sp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
-        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/logo">
 
-    <FrameLayout
-        android:id="@+id/frame1"
-        android:layout_width="320dp"
-        android:layout_height="55dp"
-        android:layout_below="@id/Text1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/box_background"
-        android:textColor="#2C6D80"
-        android:textSize="18sp"
-        android:visibility="visible">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ToggleButton
-            android:id="@+id/play_pause_toggle1"
-            android:layout_width="33dp"
-            android:layout_height="33dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="6dp"
-            android:checked="false"
-            android:textOff=""
-            android:textOn=""
-            android:background="@drawable/play_pause_togglebutton"
-            android:padding="10dp"/>
+            <TextView
+                android:id="@+id/Text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:text="Asian Flute"
+                android:textColor="#2C6D80"
+                android:textSize="16sp" />
 
-        <SeekBar
-            android:id="@+id/seekBar1"
-            android:layout_width="278dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_marginLeft="10dp" />
-    </FrameLayout>
+            <FrameLayout
+                android:id="@+id/frame1"
+                android:layout_width="320dp"
+                android:layout_height="55dp"
+                android:layout_below="@id/Text1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/box_background"
+                android:textColor="#2C6D80"
+                android:textSize="18sp"
+                android:visibility="visible">
+
+                <ToggleButton
+                    android:id="@+id/play_pause_toggle1"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="6dp"
+                    android:checked="false"
+                    android:textOff=""
+                    android:textOn=""
+                    android:background="@drawable/play_pause_togglebutton"
+                    android:padding="10dp"/>
+
+                <SeekBar
+                    android:id="@+id/seekBar1"
+                    android:layout_width="278dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_marginLeft="10dp" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/Text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/frame1"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:text="Yoga"
+                android:textColor="#2C6D80"
+                android:textSize="16sp" />
+
+            <FrameLayout
+                android:id="@+id/frame2"
+                android:layout_width="320dp"
+                android:layout_height="55dp"
+                android:layout_below="@id/Text2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/box_background"
+                android:textColor="#2C6D80"
+                android:textSize="18sp"
+                android:visibility="visible">
+
+                <ToggleButton
+                    android:id="@+id/play_pause_toggle2"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:layout_gravity="center_vertical"
+                    android:checked="false"
+                    android:textOff=""
+                    android:textOn=""
+                    android:background="@drawable/play_pause_togglebutton"
+                    android:layout_marginLeft="6dp"
+                    android:padding="10dp"/>
+
+                <SeekBar
+                    android:id="@+id/seekBar2"
+                    android:layout_width="278dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_horizontal|center_vertical" />
+            </FrameLayout>
 
 
-    <TextView
-        android:id="@+id/Text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/frame1"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="15dp"
-        android:text="Earth Drum"
-        android:textColor="#2C6D80"
-        android:textSize="16sp" />
-
-    <FrameLayout
-        android:id="@+id/frame2"
-        android:layout_width="320dp"
-        android:layout_height="55dp"
-        android:layout_below="@id/Text2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/box_background"
-        android:textColor="#2C6D80"
-        android:textSize="18sp"
-        android:visibility="visible">
-
-        <ToggleButton
-            android:id="@+id/play_pause_toggle2"
-            android:layout_width="33dp"
-            android:layout_height="33dp"
-            android:layout_gravity="center_vertical"
-            android:checked="false"
-            android:textOff=""
-            android:textOn=""
-            android:background="@drawable/play_pause_togglebutton"
-            android:layout_marginLeft="6dp"
-            android:padding="10dp"/>
-
-        <SeekBar
-            android:id="@+id/seekBar2"
-            android:layout_width="278dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center_horizontal|center_vertical" />
-    </FrameLayout>
-
-
-    <TextView
-        android:id="@+id/Text3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/frame2"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="15dp"
-        android:text="Wind Chimes"
-        android:textColor="#2C6D80"
-        android:textSize="16sp" />
+            <TextView
+                android:id="@+id/Text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/frame2"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:text="Spiritual"
+                android:textColor="#2C6D80"
+                android:textSize="16sp" />
 
     <FrameLayout
         android:id="@+id/frame3"
@@ -153,17 +161,17 @@
             android:layout_gravity="center_horizontal|center_vertical" />
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/Text4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/frame3"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="15dp"
-        android:text="River Steam"
-        android:textColor="#2C6D80"
-        android:textSize="16sp" />
+            <TextView
+                android:id="@+id/Text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/frame3"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:text="River Steam"
+                android:textColor="#2C6D80"
+                android:textSize="16sp" />
 
     <FrameLayout
         android:id="@+id/frame4"
@@ -197,17 +205,17 @@
             android:layout_gravity="center_horizontal|center_vertical" />
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/Text5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/frame4"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="15dp"
-        android:text="Rain"
-        android:textColor="#2C6D80"
-        android:textSize="16sp" />
+            <TextView
+                android:id="@+id/Text5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/frame4"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:text="Birds"
+                android:textColor="#2C6D80"
+                android:textSize="16sp" />
 
     <FrameLayout
         android:id="@+id/frame5"
@@ -240,5 +248,139 @@
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_horizontal|center_vertical" />
     </FrameLayout>
+
+            <TextView
+                android:id="@+id/Text6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/frame5"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:text="Rain"
+                android:textColor="#2C6D80"
+                android:textSize="16sp" />
+
+    <FrameLayout
+        android:id="@+id/frame6"
+        android:layout_width="325dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/Text6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/box_background"
+        android:textColor="#2C6D80"
+        android:textSize="18sp"
+        android:visibility="visible">
+
+        <ToggleButton
+            android:id="@+id/play_pause_toggle6"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center_vertical"
+            android:checked="false"
+            android:textOff=""
+            android:textOn=""
+            android:background="@drawable/play_pause_togglebutton"
+            android:layout_marginLeft="6dp"
+            android:padding="10dp"/>
+
+        <SeekBar
+            android:id="@+id/seekBar6"
+            android:layout_width="278dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_horizontal|center_vertical" />
+    </FrameLayout>
+
+            <TextView
+                android:id="@+id/Text7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/frame6"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:text="Nature Meditation"
+                android:textColor="#2C6D80"
+                android:textSize="16sp" />
+
+            <FrameLayout
+                android:id="@+id/frame7"
+                android:layout_width="325dp"
+                android:layout_height="55dp"
+                android:layout_below="@id/Text7"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/box_background"
+                android:textColor="#2C6D80"
+                android:textSize="18sp"
+                android:visibility="visible">
+
+                <ToggleButton
+                    android:id="@+id/play_pause_toggle7"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:layout_gravity="center_vertical"
+                    android:checked="false"
+                    android:textOff=""
+                    android:textOn=""
+                    android:background="@drawable/play_pause_togglebutton"
+                    android:layout_marginLeft="6dp"
+                    android:padding="10dp"/>
+
+                <SeekBar
+                    android:id="@+id/seekBar7"
+                    android:layout_width="278dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_horizontal|center_vertical" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/Text8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/frame7"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:text="Nature"
+                android:textColor="#2C6D80"
+                android:textSize="16sp" />
+
+            <FrameLayout
+                android:id="@+id/frame8"
+                android:layout_width="325dp"
+                android:layout_height="55dp"
+                android:layout_below="@id/Text8"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/box_background"
+                android:textColor="#2C6D80"
+                android:textSize="18sp"
+                android:visibility="visible">
+
+                <ToggleButton
+                    android:id="@+id/play_pause_toggle8"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:layout_gravity="center_vertical"
+                    android:checked="false"
+                    android:textOff=""
+                    android:textOn=""
+                    android:background="@drawable/play_pause_togglebutton"
+                    android:layout_marginLeft="6dp"
+                    android:padding="10dp"/>
+
+                <SeekBar
+                    android:id="@+id/seekBar8"
+                    android:layout_width="278dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_horizontal|center_vertical" />
+            </FrameLayout>
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

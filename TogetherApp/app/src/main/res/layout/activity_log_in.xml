@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:id="@+id/loginpage"
     tools:context=".LogIn">
 
     <ImageView
@@ -11,7 +13,7 @@
         android:layout_width="364dp"
         android:layout_height="263dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:src="@drawable/logo5" />
 
     <EditText

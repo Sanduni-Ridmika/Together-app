@@ -3,6 +3,7 @@ package com.example.togetherapp
 import BaseActivity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
@@ -118,7 +119,10 @@ class UserProfile : BaseActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(applicationContext, "Database Error", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(applicationContext, "Database Error", Toast.LENGTH_SHORT).show()
+                if (mAuth.currentUser != null) {
+                    Toast.makeText(applicationContext, "Database Error", Toast.LENGTH_SHORT).show()
+                }
             }
         })
 

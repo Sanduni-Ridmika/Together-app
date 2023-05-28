@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -14,6 +15,7 @@ class SignUp : AppCompatActivity() {
     private lateinit var edtName: EditText
     private lateinit var edtEmail: EditText
     private lateinit var edtPassword: EditText
+    private lateinit var textLogin: TextView
     private lateinit var btnSignUp: Button
     private lateinit var mAuth: FirebaseAuth
 
@@ -26,7 +28,13 @@ class SignUp : AppCompatActivity() {
         edtName = findViewById(R.id.edt_name)
         edtEmail = findViewById(R.id.edt_email)
         edtPassword = findViewById(R.id.edt_password)
+        textLogin = findViewById(R.id.textLogin)
         btnSignUp = findViewById(R.id.btnSignUp)
+
+        textLogin.setOnClickListener {
+            val intent = Intent(this, LogIn::class.java)
+            startActivity(intent)
+        }
 
         btnSignUp.setOnClickListener {
             val email = edtEmail.text.toString()
@@ -36,6 +44,12 @@ class SignUp : AppCompatActivity() {
         }
     }
     private fun signUp(email: String, password: String) {
+        val displayName = edtName.text.toString()
+
+        if (displayName.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this@SignUp, "Please enter all required information.", Toast.LENGTH_SHORT).show()
+            return
+        }
         //creating user
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->

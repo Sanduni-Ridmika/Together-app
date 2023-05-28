@@ -17,7 +17,7 @@ class LogIn : AppCompatActivity() {
     private lateinit var edtPassword: EditText
     private lateinit var btnLogIn: Button
     private lateinit var btnSignUp: Button
-    private lateinit var mAuth: FirebaseAuth
+    lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,8 +57,13 @@ class LogIn : AppCompatActivity() {
         }
     }
 
-    private fun login(email: String, password: String){
+    fun login(email: String, password: String):Boolean{
         //login user
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this@LogIn, "Please enter both email and password.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        var r = false
         mAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -66,6 +71,7 @@ class LogIn : AppCompatActivity() {
                     val intent = Intent(this@LogIn, Home::class.java)
                     startActivity(intent)
                     finish()
+                    r = true
 
                 } else {
                     // If login fails display a message to the user.
@@ -76,8 +82,8 @@ class LogIn : AppCompatActivity() {
                         else -> "Login failed."
                     }
                     Toast.makeText(this@LogIn, errorMessage, Toast.LENGTH_SHORT).show()
-
                 }
             }
+        return r
     }
 }

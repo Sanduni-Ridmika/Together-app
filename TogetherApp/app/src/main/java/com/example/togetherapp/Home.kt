@@ -11,10 +11,10 @@ import android.widget.PopupMenu
 import com.google.firebase.auth.FirebaseAuth
 
 class Home : BaseActivity() {
-    private lateinit var button1: Button
-    private lateinit var button2: Button
-    private lateinit var button3: Button
-    private lateinit var button4: Button
+    lateinit var button1: Button
+    lateinit var button2: Button
+    lateinit var button3: Button
+    lateinit var button4: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
